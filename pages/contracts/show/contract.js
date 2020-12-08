@@ -5,7 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    contracts: {}
+  },
 
+  onShow: function () {
+    var that = this
+    that.setData({
+      contracts: [
+        {id:1,}
+      ]
+    })
   },
 
   /**
