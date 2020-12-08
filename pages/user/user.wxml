@@ -1,0 +1,13 @@
+<image src="../../images/home-banner.png" class="banner"></image>
+<view class="indexIcon">
+	<navigator hover-class="btn-hover" url="../contract/contractShow/contractShow" class="pos">
+		<view class="circletip {{getCount.contarct==0 ?'qh':''}}">{{getCount.contarct}}</view>
+		<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
+		<text>合同管理</text>
+	</navigator>
+	<navigator hover-class="btn-hover" url="../contract/return/return" class="pos">
+		<view class="circletip {{getCount.contractReturn==0 ?'qh':''}}">{{getCount.contractReturn}}</view>
+		<text class="iconfont icon-navicon-dbd iconOrder iconBox" style="display:flex; margin:0 auto"></text>
+		<text>费用管理</text>
+	</navigator>
+</view>

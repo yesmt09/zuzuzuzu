@@ -1,0 +1,61 @@
+.marginLeft12 {
+  margin-left: 12px;
+}
+.tableViewCellHeader01 {
+ padding-right: 12px;
+  padding-top: 15px;
+  padding-left: 12px;
+  align-items: center;
+  background-color: white;
+}
+.fontSize18 {
+  font-size: 15px;
+  color: #131111;
+}
+view.InlineBlock {
+  display: flex;
+  align-items: center;
+  padding-left: 10rpx;
+}
+.borderLine{
+  border: 1rpx solid #666;
+  border-radius: 14rpx;
+  height: 35px;
+  line-height: 35rpx;
+  width: 100%;
+  padding-left: 20rpx;
+  font-size: 26rpx;
+}
+
+text{
+  display: inline-block;
+}
+.bgwhite {
+  background-color: #fff;
+  padding-bottom: 10px;
+}
+text.time,.view2 .ywy{
+  width: 180rpx;
+}
+.font_color {
+  font-weight: normal;
+ color: #333;
+}
+
+
+.date_right{
+  margin-right: 20px;
+}
+.font_top2 {
+ width: 95px;
+}
+.margin12 {
+  margin:0 10px;
+}
+.bgWhite{
+  background: #fff;
+}
+.yewuyuanInput{
+  margin:0 140rpx 0 40rpx;
+
+}

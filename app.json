@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/contracts/show/contract",
+    "pages/finances/show/finance",
+    "pages/user/show/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#108ee9",
+    "navigationBarTitleText": "审批",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "debug": "ture",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icon-home.png",
+        "selectedIconPath": "images/icon-home-select.png"
+      },
+      {
+        "pagePath": "pages/user/show/user",
+        "text": "个人中心",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-select.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

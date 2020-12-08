@@ -1,0 +1,40 @@
+<view>
+
+
+	<view class="tb-toppest">
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+			<image class="icon" src="../../images/ht-icon.png"></image>
+			<view class="content">合同审批</view>
+		</navigator>
+	</view>
+	<view class="tb-toppest">
+		<navigator url="../contract/return/return" hover-class="none">
+			<image class="icon" src="../../images/tgd-icon.png"></image>
+			<view class="content">退改单审批</view>
+		</navigator>
+	</view>
+	<view class="tb-toppest">
+		<navigator url="../contract/onlyReturn/onlyReturn">
+			<image class="icon" src="../../images/jth-icon.png"></image>
+			<view class="content">仅退货审批</view>
+		</navigator>
+	</view>
+	<view class="tb-toppest">
+		<navigator url="../contract/newOrder/newOrder">
+			<image class="icon" src="../../images/xsc-icon.png"></image>
+			<view class="content">新生成订单审批</view>
+		</navigator>
+	</view>
+	<view class="tb-toppest">
+		<navigator url="../contract/djContract/djContract">
+			<image class="icon" src="../../images/ht-icon.png"></image>
+			<view class="content">点价合同审批</view>
+		</navigator>
+	</view>
+	<view class="tb-toppest">
+		<navigator url="../contract/djOrder/djOrder">
+			<image class="icon" src="../../images/tgd-icon.png"></image>
+			<view class="content">点价订单审批</view>
+		</navigator>
+	</view>
+</view>

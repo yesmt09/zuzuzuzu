@@ -1,0 +1,8 @@
+<view>
+	<view class="tb-toppest">
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+			<image class="icon" src="../../images/ht-icon.png"></image>
+			<view class="content">合同审批</view>
+		</navigator>
+	</view>
+</view>
