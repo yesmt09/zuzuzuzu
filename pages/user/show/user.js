@@ -9,10 +9,22 @@ Page({
     orderItems: [
       {
         typeId: 0,
-        name: '待付款',
+        name: '代缴房租',
         url: 'bill',
         imageurl: '/static/images/daifukuan.png',
-      }
+      },
+      {
+        typeId: 1,
+        name: '租住中',
+        url: 'bill',
+        imageurl: '/static/images/zhusu.png',
+      },
+      {
+        typeId: 2,
+        name: '已退租',
+        url: 'bill',
+        imageurl: '/static/images/tuizu.png',
+      },
     ],
   },
   //事件处理函数

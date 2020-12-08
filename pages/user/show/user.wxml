@@ -5,8 +5,8 @@
   </view>
   <view class="separate"></view>
   <view class="order" catchtap="toOrder">
-    <text class="myorder-text">我的订单</text>
-    <text class="myorderlook-text">查看全部订单</text>
+    <text class="myorder-text">租住信息</text>
+    <!-- <text class="myorderlook-text">查看全部订单</text> -->
   </view>
   <view class="line"></view>
   <view class="navs">
@@ -20,36 +20,16 @@
   <view class="line"></view>
   
   <view class="person-list">
-
+<!-- 
     <view class="list-item">
       <image class="item-image" src="/static/images/youhuiquan.png"></image>
       <text class="item-text">优惠券</text>
-    </view>
-
-    <view class="person-line"></view>
-    <view class="list-item">
-      <image class="item-image" src="/static/images/wodeshoucang.png"></image>
-      <text class="item-text">我的收藏</text>
-    </view>
-
-    <view class="person-line"></view>
-    <view class="list-item">
-      <image class="item-image" src="/static/images/shouhuodizhi-copy.png"></image>
-      <text class="item-text">收货地址</text>
-    </view>
-
+    </view> -->
     <view class="person-line"></view>
     <view class="list-item">
       <image class="item-image" src="/static/images/shouhoujilumdpi.png"></image>
-      <text class="item-text">售后记录</text>
+      <text class="item-text">个人信息</text>
     </view>
-
-    <view class="person-line"></view>
-    <view class="list-item">
-      <image class="item-image" src="/static/images/wodepingjia.png"></image>
-      <text class="item-text">我的评价</text>
-    </view>
-
     <view class="person-line"></view>
     <view class="list-item">
       <image class="item-image" src="/static/images/kefu.png"></image>

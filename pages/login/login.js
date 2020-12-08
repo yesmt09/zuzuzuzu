@@ -1,7 +1,7 @@
 //index.js
 
 const {
-  request
+  request, getUserInfo
 } = require("../../utils/util")
 
 //获取应用实例
@@ -17,7 +17,7 @@ Page({
     var that = this
   },
   onLoad: function () {
-      this.getSystemInfo().then(this.getSettingInfo)
+    this.getSettingInfo
   },
   bindGetUserInfo(e) {
     if (!e.detail.userInfo) {
@@ -35,90 +35,8 @@ Page({
         }
       });
     } else {
-      this.getUserInfo()
+      getUserInfo(getApp())
     }
   },
 
-  getSystemInfo() {
-    var that = this;
-    return new Promise(function (resolve, reject) {
-      wx.login({
-        success: function (res) {
-          if (res.code) {
-            request({
-              url: app.globalData.BaseURL + '/user/authentication',
-              data: {
-                code: res.code,
-              },
-              method: 'post',
-              success: function (res) {
-                console.log(res)
-                if (res.data.error === 0) {
-                  app.globalData.userid = res.data.data.openid
-                  wx.setStorageSync('userid', res.data.data.openid); //存储openid
-                  resolve(res);
-                } else {
-                  wx.showModal({ // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
-                    title: '提示',
-                    content: '登录失败，验证失败！'
-                  })
-                }
-              }
-            })
-          } else {
-            wx.showModal({ // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
-              title: '提示',
-              content: '登录失败！' + res.errMsg
-            })
-          }
-        }
-      })
-  })
-  },
-
-  getSettingInfo: function () {
-    var that = this
-    return new Promise(function (resolve, reject) {
-      wx.getSetting({
-        success: res => {
-          if (res.authSetting['scope.userInfo']) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-            that.getUserInfo()
-          } else {
-            that.setData({
-              showButtion: true,
-            })
-          }
-        }
-      })
-    })
-  },
-
-  getUserInfo() {
-    var that = this
-    wx.getUserInfo({
-      success: userInfo => {
-        if (userInfo.errMsg != 'getUserInfo:ok') {
-          wx.showModal({ // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
-            title: '提示',
-            content: '获取用户信息失败'
-          })
-        } else {
-          getApp().globalData.userInfo = JSON.parse(userInfo.rawData)
-          request({
-            url: app.globalData.BaseURL + '/user/unionId',
-            data: {
-              userInfo: userInfo
-            },
-            method: 'post',
-            success: function (res) {
-              wx.switchTab({
-                url: '/pages/index/index',
-              })
-            }
-          })
-        }
-      }
-    })
-  }
 })

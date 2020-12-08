@@ -58,3 +58,33 @@ function request({
   })
 }
 module.exports.request = request
+
+function getUserInfo(app) {
+  console.log(app)
+  wx.getUserInfo({
+    success: userInfo => {
+      if (userInfo.errMsg != 'getUserInfo:ok') {
+        wx.showModal({ // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+          title: '提示',
+          content: '获取用户信息失败'
+        })
+      } else {
+        app.globalData.userInfo = JSON.parse(userInfo.rawData)
+        request({
+          url: app.globalData.BaseURL + '/user/unionId',
+          data: {
+            userInfo: userInfo
+          },
+          method: 'post',
+          success: function (res) {
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }
+        })
+      }
+    }
+  })
+}
+
+module.exports.getUserInfo = getUserInfo

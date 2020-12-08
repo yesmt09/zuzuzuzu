@@ -1,15 +1,22 @@
-<view class="container" wx:if="showButtion">
-  <view wx:if="{{canIUse}}">
-    <view class='header'>
-      <image src='/static/images/weixin_1.png'></image>
+<view class="container">
+  <view  wx:if="{{showButtion}}">
+    <view wx:if="{{canIUse}}">
+      <view class='header'>
+        <image src='/static/images/weixin_1.png'></image>
+      </view>
+      <view class='content'>
+        <view>申请获取以下权限</view>
+        <text>获得你的公开信息(昵称，头像等)</text>
+      </view>
+      <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+        授权登录
+      </button>
     </view>
-    <view class='content'>
-      <view>申请获取以下权限</view>
-      <text>获得你的公开信息(昵称，头像等)</text>
-    </view>
-    <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
-      授权登录
-    </button>
+    <view wx:else>请升级微信版本</view>
   </view>
-  <view wx:else>请升级微信版本</view>
+  <view wx:else>
+    <button class='bottom' type='primary' loading="true">
+        授权登录中...
+      </button>
+  </view>
 </view>

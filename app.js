@@ -1,5 +1,5 @@
 const {
-  request
+  request, getUserInfo
 } = require("./utils/util");
 
 //app.js
@@ -28,7 +28,7 @@ App({
         //测试环境(体验版)
       } else if (version == "release") {}
     }
-    that.updataApp()
+    that.getSystemInfo().then(that.getSettingInfo)
   },
 
   updataApp: function () { //版本更新
@@ -65,6 +65,58 @@ App({
         })
       }
     })
-  }
+  },
 
+  getSystemInfo() {
+    return new Promise(function (resolve, reject) {
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            request({
+              url: getApp().globalData.BaseURL + '/user/authentication',
+              data: {
+                code: res.code,
+              },
+              method: 'post',
+              success: function (res) {
+                if (res.data.error === 0) {
+                  getApp().globalData.userid = res.data.data.openid
+                  wx.setStorageSync('userid', res.data.data.openid); //存储openid
+                  resolve(res);
+                } else {
+                  wx.showModal({ // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+                    title: '提示',
+                    content: '登录失败，验证失败！'
+                  })
+                }
+              }
+            })
+          } else {
+            wx.showModal({ // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+              title: '提示',
+              content: '登录失败！' + res.errMsg
+            })
+          }
+        }
+      })
+    })
+  },
+  
+  getSettingInfo: function () {
+    var that = this
+    return new Promise(function (resolve, reject) {
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+            getUserInfo(getApp())
+          } else {
+            wx.navigateTo({
+              url: 'pages/login/login',
+            })
+          }
+        }
+      })
+    })
+  },
 })
