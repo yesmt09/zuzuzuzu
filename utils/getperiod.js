@@ -1,4 +1,4 @@
-class GetPeriod{
+class GetPeriod {
   constructor() {
     this.now = new Date();
     this.nowYear = this.now.getFullYear(); //当前年 
@@ -25,9 +25,8 @@ class GetPeriod{
     let myyear = date.getFullYear();
     let mymonth = date.getMonth() + 1;
     let myweekday = date.getDate();
-    return myyear + "年" + mymonth + "月" + myweekday+"日";
+    return myyear + "年" + mymonth + "月" + myweekday + "日";
   }
-
 
   //获取某月的天数
   getMonthDays(myMonth) {
@@ -67,19 +66,16 @@ class GetPeriod{
   }
   //获取本周的结束日期
   getWeekEndDate() {
-    return this.formatDate(new Date(this.nowYear, this.nowMonth, this.nowDay + (7 - this.nowDayOfWeek )));
+    return this.formatDate(new Date(this.nowYear, this.nowMonth, this.nowDay + (7 - this.nowDayOfWeek)));
   }
   //获取上周的开始日期
   getLastWeekStartDate() {
-    return this.formatDate(new Date(this.nowYear, this.nowMonth, this.nowDay - this.nowDayOfWeek -6));
+    return this.formatDate(new Date(this.nowYear, this.nowMonth, this.nowDay - this.nowDayOfWeek - 6));
   }
   //获取上周的结束日期
   getLastWeekEndDate() {
     return this.formatDate(new Date(this.nowYear, this.nowMonth, this.nowDay + (7 - this.nowDayOfWeek) - 7));
   }
-
-
-
 
   //获取本月的开始日期
   getMonthStartDate() {
@@ -91,14 +87,12 @@ class GetPeriod{
   }
   //获取上月的开始日期
   getLastMonthStartDate() {
-    return this.formatDate(new Date(this.nowYear, this.nowMonth-1, 1));
+    return this.formatDate(new Date(this.nowYear, this.nowMonth - 1, 1));
   }
   //获取上月的结束日期
   getLastMonthEndDate() {
-    return this.formatDate(new Date(this.nowYear, this.nowMonth-1, this.getMonthDays(this.nowMonth-1)));
+    return this.formatDate(new Date(this.nowYear, this.nowMonth - 1, this.getMonthDays(this.nowMonth - 1)));
   }
-
-
 
   //获取本季度的开始日期
   getQuarterStartDate() {
@@ -117,18 +111,20 @@ class GetPeriod{
     return this.formatDate(new Date(this.nowYear, 11, 31));
   }
   //获取时段方法
-  getPeriod(obj){
-    let opts = obj || {},time = null;
+  getPeriod(obj) {
+    let opts = obj || {},
+      time = null;
     opts = {
       periodType: opts.periodType || 'now',
       spaceType: opts.spaceType || '~'
     }
-    function formatNumber(param1, param2){
+
+    function formatNumber(param1, param2) {
       return [param1, param2].join(opts.spaceType);
     }
-    if (opts.periodType == 'week'){
+    if (opts.periodType == 'week') {
       time = formatNumber(this.getWeekStartDate(), this.getWeekEndDate());
-    } else if (opts.periodType == 'month'){
+    } else if (opts.periodType == 'month') {
       time = formatNumber(this.getMonthStartDate(), this.getMonthEndDate());
     } else if (opts.periodType == 'quarter') {
       time = formatNumber(this.getQuarterStartDate(), this.getQuarterEndDate());

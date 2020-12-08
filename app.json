@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/contracts/show/contract",
     "pages/finances/show/finance",
@@ -22,14 +23,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/icon-home.png",
-        "selectedIconPath": "images/icon-home-select.png"
+        "iconPath": "/static/images/icon-home.png",
+        "selectedIconPath": "/static/images/icon-home-select.png"
       },
       {
         "pagePath": "pages/user/show/user",
         "text": "个人中心",
-        "iconPath": "images/user.png",
-        "selectedIconPath": "images/user-select.png"
+        "iconPath": "/static/images/user.png",
+        "selectedIconPath": "/static/images/user-select.png"
       }
     ]
   },

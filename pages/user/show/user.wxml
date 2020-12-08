@@ -1,2 +1,60 @@
-<!--pages/user/show/user.wxml-->
-<text>pages/user/show/user.wxml</text>
+<view>
+  <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="separate"></view>
+  <view class="order" catchtap="toOrder">
+    <text class="myorder-text">我的订单</text>
+    <text class="myorderlook-text">查看全部订单</text>
+  </view>
+  <view class="line"></view>
+  <view class="navs">
+    <block wx:for-items="{{orderItems}}" wx:key="name">
+      <view class="nav-item" catchtap="toOrder" data-type="{{item.name}}" data-typeid="{{item.typeId}}">
+        <image src="{{item.imageurl}}" class="nav-image" />
+        <text class="cz">{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="line"></view>
+  
+  <view class="person-list">
+
+    <view class="list-item">
+      <image class="item-image" src="/static/images/youhuiquan.png"></image>
+      <text class="item-text">优惠券</text>
+    </view>
+
+    <view class="person-line"></view>
+    <view class="list-item">
+      <image class="item-image" src="/static/images/wodeshoucang.png"></image>
+      <text class="item-text">我的收藏</text>
+    </view>
+
+    <view class="person-line"></view>
+    <view class="list-item">
+      <image class="item-image" src="/static/images/shouhuodizhi-copy.png"></image>
+      <text class="item-text">收货地址</text>
+    </view>
+
+    <view class="person-line"></view>
+    <view class="list-item">
+      <image class="item-image" src="/static/images/shouhoujilumdpi.png"></image>
+      <text class="item-text">售后记录</text>
+    </view>
+
+    <view class="person-line"></view>
+    <view class="list-item">
+      <image class="item-image" src="/static/images/wodepingjia.png"></image>
+      <text class="item-text">我的评价</text>
+    </view>
+
+    <view class="person-line"></view>
+    <view class="list-item">
+      <image class="item-image" src="/static/images/kefu.png"></image>
+      <text class="item-text">在线客服</text>
+    </view>
+  </view>
+  <view class="separate"></view>
+</view>
