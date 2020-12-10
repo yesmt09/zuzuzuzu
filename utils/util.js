@@ -48,13 +48,16 @@ function request({
     method: method,
     timeout: 0,
     success: (result) => {
-      wx.setStorageSync('cookie', result.header['Set-Cookie']);
       success(result)
     },
     fail: (result) => {
       wx.setStorageSync('cookie', result.header['Set-Cookie']);
     },
-    complete: (res) => {},
+    complete: (result) => {
+      if(result.header['Set-Cookie']) {
+        wx.setStorageSync('cookie', result.header['Set-Cookie']);
+      }
+    },
   })
 }
 module.exports.request = request
