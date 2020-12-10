@@ -1,40 +1,55 @@
 <view>
-
-
 	<view class="tb-toppest">
 		<navigator url="../contract/contractShow/contractShow" hover-class="none">
-			<image class="icon" src="../../images/ht-icon.png"></image>
-			<view class="content">合同审批</view>
+			<text>0</text>
+			<text class="money">上月实收</text>
+		</navigator>
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+			<text>0</text>
+			<text  class="money">本月应收</text>
+		</navigator>
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+			<text>0</text>
+			<text class="money">本月实收</text>
 		</navigator>
 	</view>
-	<view class="tb-toppest">
-		<navigator url="../contract/return/return" hover-class="none">
-			<image class="icon" src="../../images/tgd-icon.png"></image>
-			<view class="content">退改单审批</view>
-		</navigator>
+	<view class="kj">快捷操作</view>
+	<view class="kjContent">
+		<navigator class="btn-hover" url="../contracts/show/contract">
+		<text></text>
+		<text>生成合同</text>
+	</navigator>
+	<navigator class="btn-hover" url="../finances/show/finance">
+		<text></text>
+		<text>快到期</text>
+	</navigator>
+	<navigator class="btn-hover" url="../finances/show/finance">
+		<text></text>
+		<text>快到期</text>
+	</navigator>
 	</view>
-	<view class="tb-toppest">
-		<navigator url="../contract/onlyReturn/onlyReturn">
-			<image class="icon" src="../../images/jth-icon.png"></image>
-			<view class="content">仅退货审批</view>
-		</navigator>
+	<view class='top'>
+    <!-- 下拉框 -->
+    <view class='top-selected' bindtap='bindShowMsg'>
+      <text>{{grade_name}}</text>
+      <image src=''></image>
+    </view>
+    <!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{select}}">
+      <view wx:for="{{grades}}" wx:key="unique">
+        <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
+      </view>
+		</view>
+		
+		<view class='page_row' bindtap="suo">
+    <view class="search">
+      <view class="df search_arr">
+        <icon class="searchcion" size='20' type='search'></icon>
+        <input class="" disabled placeholder="请输入关键字" value="{{searchValue}}"/>
+      </view>
+    </view>
+    <view class='sousuo'>搜索</view>
+  </view>
 	</view>
-	<view class="tb-toppest">
-		<navigator url="../contract/newOrder/newOrder">
-			<image class="icon" src="../../images/xsc-icon.png"></image>
-			<view class="content">新生成订单审批</view>
-		</navigator>
-	</view>
-	<view class="tb-toppest">
-		<navigator url="../contract/djContract/djContract">
-			<image class="icon" src="../../images/ht-icon.png"></image>
-			<view class="content">点价合同审批</view>
-		</navigator>
-	</view>
-	<view class="tb-toppest">
-		<navigator url="../contract/djOrder/djOrder">
-			<image class="icon" src="../../images/tgd-icon.png"></image>
-			<view class="content">点价订单审批</view>
-		</navigator>
-	</view>
+
 </view>

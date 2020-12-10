@@ -1,118 +1,118 @@
 {
-	"description": "项目配置文件。",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": false,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"bundle": false,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"compileHotReLoad": false,
-		"useMultiFrameRuntime": false,
-		"useApiHook": true,
-		"enableEngineNative": false,
-		"useIsolateContext": true,
-		"userConfirmedBundleSwitch": false,
-		"packNpmManually": false,
-		"packNpmRelationList": [],
-		"minifyWXSS": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
-	"appid": "wxcd1f4cb09439e413",
-	"projectname": "%E7%A7%9F%E5%AE%A2%E7%AE%A1%E7%90%86",
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"list": []
-		},
-		"conversation": {
-			"list": []
-		},
-		"plugin": {
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"list": []
-		},
-		"miniprogram": {
-			"list": [
-				{
-					"id": 0,
-					"name": "测试自动更新",
-					"pathName": "pages/index/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "pages/contract/contractShow/contractShow",
-					"pathName": "pages/contract/contractShow/contractShow",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/invoiceInput/invoiceInput",
-					"pathName": "pages/invoiceInput/invoiceInput",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/outbound/mixed/mixed",
-					"pathName": "pages/outbound/mixed/mixed",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/contract/contractShow/contractShow",
-					"pathName": "pages/contract/contractShow/contractShow",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "pages/wux/wux",
-					"pathName": "pages/wux/wux",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "bundle": false,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.6.6",
+  "appid": "wxcd1f4cb09439e413",
+  "projectname": "%E7%A7%9F%E5%AE%A2%E7%AE%A1%E7%90%86",
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "测试自动更新",
+          "pathName": "pages/index/index",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "pages/contract/contractShow/contractShow",
+          "pathName": "pages/contract/contractShow/contractShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/invoiceInput/invoiceInput",
+          "pathName": "pages/invoiceInput/invoiceInput",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/outbound/mixed/mixed",
+          "pathName": "pages/outbound/mixed/mixed",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/contract/contractShow/contractShow",
+          "pathName": "pages/contract/contractShow/contractShow",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "pages/wux/wux",
+          "pathName": "pages/wux/wux",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

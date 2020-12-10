@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
-    "pages/contracts/show/contract",
+    "pages/contracts/show/show",
+    "pages/contracts/list/list",
     "pages/finances/show/finance",
     "pages/user/show/user"
   ],

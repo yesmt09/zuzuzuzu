@@ -125,7 +125,7 @@ page {
   display: block;
   overflow: hidden;
   width: 750rpx;
-  height: 267rpx;
+  height: 308rpx;
   margin-bottom: 30rpx;
 }
 
