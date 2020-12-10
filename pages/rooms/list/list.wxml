@@ -1,0 +1,34 @@
+<view class="swiper-tab">
+  <block wx:for="{{swipertab}}" wx:key="sptab">
+    <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
+  </block>
+</view>
+<swiper class="swiper-box" duration="300" style="height:{{deviceH-31}}px">
+  <!-- 完成 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view  class="orderDetails" wx:for="{{contracts}}" wx:key="id" bindtap="gotoShow" data-id="{{item.id}}">
+        <view class="orderListTitle">
+          <text class="orderName">订单号: {{item.orderid}}</text>
+          <text class="userName">{{item.title}}</text>
+          <text class="orderStatus">{{item.status}}</text>
+        </view>
+        <view class="orderListDetails">
+          <!-- <view class="productImg">
+            <image src="{{item.url}}" background-size="cover"></image>
+          </view> -->
+          <view class="productInfo">
+            <view class="productTitle">房间号: {{item.room_id}}</view>
+            <view class="productTitle">起始时间: {{item.begin_day}}</view>
+            <view class="productPeople">结束时间: {{item.end_day}}</view>
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+            合计：<text class="money">￥{{item.price}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

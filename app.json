@@ -5,7 +5,9 @@
     "pages/contracts/show/show",
     "pages/contracts/list/list",
     "pages/finances/show/finance",
-    "pages/user/show/user"
+    "pages/user/show/user",
+    "pages/rooms/list/list",
+    "pages/rooms/show/show"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -26,6 +28,12 @@
         "text": "首页",
         "iconPath": "/static/images/icon-home.png",
         "selectedIconPath": "/static/images/icon-home-select.png"
+      },
+      {
+        "pagePath": "pages/rooms/list/list",
+        "text": "房屋管理",
+        "iconPath": "/static/images/icon-fangwu.png",
+        "selectedIconPath": "/static/images/icon-fangwu-select.png"
       },
       {
         "pagePath": "pages/user/show/user",
