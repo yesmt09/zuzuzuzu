@@ -12,55 +12,45 @@
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
     <view class="mod-a">
       <view class="mod t-name">
-        <text class="key">活动名称</text>
-        <input name="title" class="input" maxlength="100" placeholder="请输入活动名称" value="{{title}}" />
-        <image class="arrow-r" src="../../images/arrow-r-0.png"></image>
+        <text class="key">合同名称</text>
+        <input name="title" class="input" maxlength="100" placeholder="请输入合同名称" value="{{title}}" />
+        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
       </view>
     </view>
 
     <view class="mod-a mt20">
-      <!-- 活动类别 -->
-      <view class="mod t-sign-time">
-        <text class="key">活动类别</text>
-        <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}">
-          <view class="value" name="types">{{types[typeIndex]}}
-            <image class="arrow-r" src="../../images/arrow-r-0.png"></image>
-          </view>
-        </picker>
-      </view>
 
       <!-- 活动地点 -->
       <view class="mod t-address" bindtap="chooseLocation">
-        <text class="key">活动地点</text>
-        <text name="address" class="value" bindtap="addressChange" value="{{address}}">{{address}}</text>
-        <image class="arrow-r" src="../../images/arrow-r-0.png"></image>
+        <text class="key">房间号</text>
+        <text name="address" class="value" value="{{address}}">{{address}}</text>
+        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
       </view>
 
       <!-- 有效时间 -->
       <view class="mod t-sign-time">
-        <text class="key">有效时间</text>
-        <picker mode="date" value="{{date}}" start="{{date}}" end="2020-09-01" bindchange="bindDateChange">
-          <view class="value" name="endtime">{{date}}
-            <image class="arrow-r" src="../../images/arrow-r-0.png"></image>
+        <text class="key">起始时间</text>
+        <picker mode="date" value="{{date}}" start="{{date}}" bindchange="bindDateChange">
+          <view class="value" name="begin_day">{{date}}
+            <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
           </view>
         </picker>
       </view>
-
-      <!-- 限制人数 -->
-      <view class="mod  t-early">
-        <text class="key">限制人数</text>
-        <switch type="switch" bindchange="switch1Change" name="switchHide" />
+      <view class="mod t-sign-time">
+        <text class="key">截止时间</text>
+        <picker mode="date" value="{{date}}" start="{{date}}" bindchange="bindDateChange">
+          <view class="value" name="end_day">{{date}}
+            <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+          </view>
+        </picker>
       </view>
-
       <!-- 人数设置 -->
-      <view wx:if="{{peopleHide}}">
         <view class="mod t-name">
           <text class="key">人数设置</text>
-          <input name="peoplenum" type="number" class="input" maxlength="100" placeholder='请输入人数' value="{{peoplenum}}" />
-          <image class="arrow-r" src="../../images/arrow-r-0.png"></image>
+          <input name="peoplenum" type="number" class="input" maxlength="100" placeholder='请输入限制住宿人数' value="{{peoplenum}}" />
+          <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
         </view>
       </view>
-    </view>
 
     <!-- 活动内容 -->
     <view class="mod-a mt20">

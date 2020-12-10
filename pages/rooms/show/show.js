@@ -5,14 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    datestart: ''
+    dataInfo: '',
+    id: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.setData({
+      id: options.id
+    })
   },
 //  点击日期从组件确定事件  
 bindDateChangeStart: function(e) {

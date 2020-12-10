@@ -2,16 +2,11 @@
 var app = getApp()
 var Bmob = require("../../../utils/bmob.js");
 var common = require("../../../utils/getCode.js")
+var {formate_data} = require("../../../utils/util.js")
 var that;
 var myDate = new Date();
 //格式化日期
-function formate_data(myDate) {
-  let month_add = myDate.getMonth() + 1;
-  var formate_result = myDate.getFullYear() + '-'
-    + month_add + '-'
-    + myDate.getDate()
-  return formate_result;
-}
+console.log(myDate)
 Page({
   /**
    * 页面的初始数据
@@ -23,19 +18,15 @@ Page({
     peopleHide: false,
     isAgree: false,
     date: formate_data(myDate),
-    address: '点击选择位置',
-    longitude: 0, //经度
-    latitude: 0,//纬度
     showTopTips: false,
     TopTips: '',
     noteMaxLen: 200,//备注最多字数
     content: "",
     noteNowLen: 0,//备注当前字数
-    types: ["运动", "游戏", "交友", "旅行", "读书", "竞赛", "电影", "音乐", "其他"],
     typeIndex: "0",
     showInput: false,//显示输入真实姓名,
   },
-
+  
   tapNotice: function (e) {
     if (e.target.id == 'notice') {
       this.hideNotice();
@@ -183,30 +174,6 @@ Page({
       typeIndex: e.detail.value
     })
   },
-  //选择地点
-  addressChange: function (e) {
-    this.addressChoose(e);
-  },
-  addressChoose: function (e) {
-    var that = this;
-    wx.chooseLocation({
-      success: function (res) {
-        that.setData({
-          address: res.name,
-          longitude: res.longitude, //经度
-          latitude: res.latitude,//纬度
-        })
-        if (e.detail && e.detail.value) {
-          this.data.address = e.detail.value;
-        }
-      },
-      fail: function (e) {
-      },
-      complete: function (e) {
-      }
-    })
-  },
-
   //改变联系方式
   bindAccountChange: function (e) {
     this.setData({
@@ -249,10 +216,6 @@ Page({
     var endtime = this.data.date;
     var typeIndex = this.data.typeIndex;
     var acttype = 1 + parseInt(typeIndex);
-    var acttypename = getTypeName(acttype); //获得类型名称
-    var address = this.data.address;
-    var longitude = this.data.longitude; //经度
-    var latitude = this.data.latitude;//纬度
     var switchHide = e.detail.value.switchHide;
     var peoplenum = e.detail.value.peoplenum;
     console.log(peoplenum);

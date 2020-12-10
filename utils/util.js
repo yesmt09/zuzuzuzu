@@ -14,8 +14,17 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function formate_data(myDate) {
+  let month_add = myDate.getMonth() + 1;
+  var formate_result = myDate.getFullYear() + '-'
+    + month_add + '-'
+    + myDate.getDate()
+  return formate_result;
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  formate_data: formate_data
 }
 
 function json2Form(json) {
