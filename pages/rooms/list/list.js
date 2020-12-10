@@ -10,14 +10,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    contracts: [],
-    contractsList: {
-      realdy:[],
-      wait: [],
-      cancel: []
+    rooms: [],
+    roomsList: {
+      free:[],
+      expire: [],
+      ing: []
     },
     currtab: 0,
-    swipertab: [{ name: '已完成', index: 0 }, { name: '待付款', index: 1 }, { name: '已取消', index: 2 }],
+    swipertab: [{ name: '空闲中', index: 0 }, { name: '快到期', index: 1 }, { name: '在租中', index: 2 }],
   },
 
   onShow: function () {
@@ -30,28 +30,29 @@ Page({
   onLoad: function (options) {
     var that = this
     request({
-        url: app.globalData.BaseURL + '/contracts/list',
+        url: app.globalData.BaseURL + '/rooms/list',
         data: {},
         method: 'get',
         success: function (res) {
-          var contractsList = {
-            realdy: [],
-            wait: [],
-            cancel: []
+          var roomsList = {
+            free:[],
+            expire: [],
+            ing: []
           }
           for (let i = 0; i < res.data.data.length; i++) {
             if(res.data.data[i]['status'] === "4") {
-              contractsList['realdy'].push(res.data.data[i])
-            } else if (res.data.data[i]['status'] === "2") {
-              contractsList['cancel'].push(res.data.data[i])
+              if (res.data.data[i]['contract']['end_day'] === "2020") {
+                roomsList['ing'].push(res.data.data[i])
+              } else {
+                roomsList['expire'].push(res.data.data[i])
+              }
             } else {
-              contractsList['wait'].push(res.data.data[i])
+              roomsList['free'].push(res.data.data[i])
             }
           }
           that.setData({
-            contractsList: contractsList,
+            roomsList: roomsList,
           })
-          console.log(contractsList)
           that.orderShow()
         }
     })
@@ -86,13 +87,12 @@ Page({
       that.setData({
         currtab: e.target.dataset.current
       })
-      console.log(that.data.currtab)
       this.orderShow()
     }
   },
   gotoShow: function (e) {
     wx.navigateTo({
-      url: '/pages/contracts/show/show?id=' + e.currentTarget.dataset.id
+      url: '/pages/rooms/show/show?id=' + e.currentTarget.dataset.id
     })
   },
   orderShow: function () {
@@ -100,17 +100,17 @@ Page({
     let data = {}
     switch (this.data.currtab) {
       case 0:
-        data = that.data.contractsList['realdy']
+        data = that.data.roomsList['free']
         break
       case 1:
-        data = that.data.contractsList['wait']
+        data = that.data.roomsList['expire']
         break
       case 2:
-        data = that.data.contractsList['cancel']
+        data = that.data.roomsList['ing']
         break
     }
     that.setData({
-      contracts: data
+      rooms: data
     })
   },
 })
