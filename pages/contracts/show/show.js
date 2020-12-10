@@ -13,17 +13,16 @@ Page({
    */
   data: {
     notice_status: false,
-    accounts: ["微信号", "QQ号", "手机号"],
     accountIndex: 0,
     peopleHide: false,
     isAgree: false,
-    date: formate_data(myDate),
+    begin_day: formate_data(myDate),
+    end_day: formate_data(myDate),
     showTopTips: false,
     TopTips: '',
     noteMaxLen: 200,//备注最多字数
     content: "",
     noteNowLen: 0,//备注当前字数
-    typeIndex: "0",
     showInput: false,//显示输入真实姓名,
   },
   
@@ -42,7 +41,6 @@ Page({
       'notice_status': false
     });
   },
-
 
   //字数改变触发事件
   bindTextAreaChange: function (e) {
@@ -162,16 +160,14 @@ Page({
     }
   },
 
-  //改变时间
-  bindDateChange: function (e) {
+  bindBeginDayChange: function (e) {
     this.setData({
-      date: e.detail.value
+      begin_day: e.detail.value
     })
   },
-  //改变活动类别
-  bindTypeChange: function (e) {
+  bindEndDayChange: function (e) {
     this.setData({
-      typeIndex: e.detail.value
+      end_day: e.detail.value
     })
   },
   //改变联系方式
