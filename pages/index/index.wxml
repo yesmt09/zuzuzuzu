@@ -1,11 +1,42 @@
 <image src="/static/images/home-banner.png" class="banner"></image>
-<view class="indexIcon">
-	<navigator hover-class="btn-hover" url="/pages/contracts/list/list" class="pos">
+<view>
+	<view class="tb-toppest">
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+			<text>0</text>
+			<text class="money">上月实收</text>
+		</navigator>
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+			<text>0</text>
+			<text  class="money">本月应收</text>
+		</navigator>
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+			<text>0</text>
+			<text class="money">本月实收</text>
+		</navigator>
+	</view>
+	<view class="kj">快捷操作</view>
+	<view class="kjContent">
+		<navigator class="btn-hover" url="../contracts/show/contract">
+			<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
+		<text>生成合同</text>
+	</navigator>
+	<navigator class="btn-hover" url="../finances/show/finance">
 		<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
-		<text>合同管理</text>
+		<text>快到期</text>
 	</navigator>
-	<navigator hover-class="btn-hover" url="/pages/finances/show/finance" class="pos">
-		<text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
-		<text>费用管理</text>
+	<navigator class="btn-hover" url="../finances/show/finance">
+		<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
+		<text>快到期</text>
 	</navigator>
+	</view>
+	<view class="indexIcon">
+		<navigator hover-class="btn-hover" url="/pages/contracts/show/contract" class="pos">
+			<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
+			<text>合同管理</text>
+		</navigator>
+		<navigator hover-class="btn-hover" url="/pages/finances/show/finance" class="pos">
+			<text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
+			<text>费用管理</text>
+		</navigator>
+	</view>
 </view>

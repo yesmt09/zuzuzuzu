@@ -11,7 +11,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    contracts: {},
+    contracts: [],
+    contractsList: {
+      realdy:[],
+      wait: [],
+      cancel: []
+    },
     currtab: 0,
     swipertab: [{ name: '已完成', index: 0 }, { name: '待付款', index: 1 }, { name: '已取消', index: 2 }],
   },
@@ -30,17 +35,31 @@ Page({
         data: {},
         method: 'get',
         success: function (res) {
-          console.log(res)
-            that.setData({
-              contracts: res.data
-            })
+          var contractsList = {
+            realdy: [],
+            wait: [],
+            cancel: []
+          }
+          for (let i = 0; i < res.data.data.length; i++) {
+            if(res.data.data[i]['status'] === "4") {
+              contractsList['realdy'].push(res.data.data[i])
+            } else if (res.data.data[i]['status'] === "2") {
+              contractsList['cancel'].push(res.data.data[i])
+            } else {
+              contractsList['wait'].push(res.data.data[i])
+            }
+          }
+          that.setData({
+            contractsList: contractsList,
+          })
+          console.log(contractsList)
+          that.orderShow()
         }
     })
   },
   onReady: function () {
     // 页面渲染完成
     this.getDeviceInfo()
-    this.orderShow()
   },
   // 下拉刷新回调接口
   onPullDownRefresh: function () {
@@ -68,39 +87,31 @@ Page({
       that.setData({
         currtab: e.target.dataset.current
       })
+      console.log(that.data.currtab)
+      this.orderShow()
     }
   },
-  tabChange: function (e) {
-    this.setData({ currtab: e.detail.current })
-    this.orderShow()
+  gotoShow: function (e) {
+    wx.navigateTo({
+      url: '/pages/contracts/show/show?id=' + e.currentTarget.dataset.id
+    })
   },
   orderShow: function () {
     let that = this
+    let data = {}
     switch (this.data.currtab) {
       case 0:
-        that.alreadyShow()
+        data = that.data.contractsList['realdy']
         break
       case 1:
-        that.waitPayShow()
+        data = that.data.contractsList['wait']
         break
       case 2:
-        that.lostShow()
+        data = that.data.contractsList['cancel']
         break
     }
-  },
-  alreadyShow: function(){
-    this.setData({
-      contracts: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "交易成功", time: "2018-09-30 14:00-16:00", status: "已结束", url: "../../images/bad0.png", money: "132" }, { name: "跃动体育运动俱乐部(圆明园店)", state: "交易成功", time: "2018-10-12 18:00-20:00", status: "未开始", url: "../../images/bad3.jpg", money: "205" }]
-    })
-  },
-  waitPayShow:function(){
-    this.setData({
-      contracts: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "待付款", time: "2018-10-14 14:00-16:00", status: "未开始", url: "../../images/bad1.jpg", money: "186" }],
-    })
-  },
-  lostShow: function () {
-    this.setData({
-      contracts: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "已取消", time: "2018-10-4 10:00-12:00", status: "未开始", url: "../../images/bad1.jpg", money: "122" }],
+    that.setData({
+      contracts: data
     })
   },
 })

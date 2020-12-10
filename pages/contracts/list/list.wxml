@@ -3,84 +3,32 @@
     <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
   </block>
 </view>
- 
-<swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-31}}px" bindchange="tabChange">
+<swiper class="swiper-box" duration="300" style="height:{{deviceH-31}}px">
   <!-- 完成 -->
   <swiper-item>
     <scroll-view class="hot-box" scroll-y="true">
-      <view  class="orderDetails" wx:for="{{alreadyOrder}}" wx:key=" ">
+      <view  class="orderDetails" wx:for="{{contracts}}" wx:key="id" bindtap="gotoShow" data-id="{{item.id}}">
         <view class="orderListTitle">
-          <text class="orderName">订单号</text>
-          <text class="userName">{{item.name}}</text>
-          <text class="orderStatus">{{item.state}}</text>
+          <text class="orderName">订单号: {{item.orderid}}</text>
+          <text class="userName">{{item.title}}</text>
+          <text class="orderStatus">{{item.status}}</text>
         </view>
         <view class="orderListDetails">
           <!-- <view class="productImg">
             <image src="{{item.url}}" background-size="cover"></image>
           </view> -->
           <view class="productInfo">
-            <view class="productTitle">预定时间: {{item.time}}</view>
-            <view class="productPeople">预定人数: {{item.people}}</view>
-            <text class="productPrice">当前状态：{{item.status}}</text>
+            <view class="productTitle">房间号: {{item.room_id}}</view>
+            <view class="productTitle">起始时间: {{item.begin_day}}</view>
+            <view class="productPeople">结束时间: {{item.end_day}}</view>
           </view>
         </view>
         <view class="productCount">
           <view>
-            合计：<text class="money">￥{{item.money}}</text>
+            合计：<text class="money">￥{{item.price}}</text>
           </view>
         </view>
       </view>
     </scroll-view>
   </swiper-item>
-  <!-- 待付款 -->
-  <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
-      <view class="orderDetails" wx:for="{{waitPayOrder}}" wx:key=" ">
-        <view class="orderListTitle">
-           <text class="userName">{{item.name}}</text>
-          <text class="orderStatus">{{item.state}}</text>
-        </view>
-        <view class="orderListDetails">
-          <!-- <view class="productImg">
-            <image src="{{item.url}}" background-size="cover"></image>
-          </view> -->
-          <view class="productInfo">
-            <view class="productTitle">预定时间: {{item.time}}</view>
-            <text class="productPrice">当前状态：{{item.status}}</text>
-          </view>
-        </view>
-        <view class="productCount">
-          <view>
-             <text>合计：￥{{item.money}}</text>
-          </view>
-        </view>
-      </view>
-    </scroll-view>
-  </swiper-item>
-  <!-- 取消 -->
-  <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
-      <view class="orderDetails" wx:for="{{lostOrder}}" wx:key=" ">
-        <view class="orderListTitle">
-         <text class="userName">{{item.name}}</text>
-          <text class="orderStatus">{{item.state}}</text>
-        </view>
-        <view class="orderListDetails">
-          <!-- <view class="productImg">
-            <image src="{{item.url}}" background-size="cover"></image>
-          </view> -->
-          <view class="productInfo">
-            <view class="productTitle">预定时间: {{item.time}}</view>
-            <text class="productPrice">当前状态：{{item.status}}</text>
-          </view>
-        </view>
-        <view class="productCount">
-          <view>
-             <text>合计：￥{{item.money}}</text>
-          </view>
-        </view>
-      </view>
-    </scroll-view>
-  </swiper-item>
- 
 </swiper>
