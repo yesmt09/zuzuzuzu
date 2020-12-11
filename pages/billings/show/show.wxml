@@ -1,2 +1,84 @@
-<!--pages/billings/show/show.wxml-->
-<text>pages/billings/show/show.wxml</text>
+<view class="ysMoney">
+   <view><text>101</text>应收：<text class="red">10</text>元</view>
+   <view class="share">转发租户</view>
+  </view>
+  <view>
+    <text class="zdtitle">账单明细</text>
+    <view class="mx">
+      <view class="mxList">
+        <text>描述</text>
+        <view>11111</view>
+      </view>
+      <view class="mxList">
+        <text>实收</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>状态</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>类型</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>收租日</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>缴费周期</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>备注</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>承租人</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>租户</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>电话</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>微信号</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>负责人</text>
+        <view>0</view>
+      </view>
+      <view class="mxList">
+        <text>姓名</text>
+        <view>0</view>
+      </view> 
+      <view class="mxList">
+        <text>电话</text>
+        <view>0</view>
+      </view> 
+      <view class="mxList">
+        <text>合同备注</text>
+        <view>0</view>
+      </view> 
+    </view>
+  </view>
+  <view class="shoukuanBottom">
+   <view class="delete" bindtap="delete">
+    <text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
+		<text>删除</text>
+   </view>
+   <view class="rushRent">
+    <text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
+		<text>催租</text>
+   </view>
+   <view class="renewal">
+    <text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
+		<text>续租</text>
+   </view>
+   <button class="confirm ">确认收款</button>
+  </view>

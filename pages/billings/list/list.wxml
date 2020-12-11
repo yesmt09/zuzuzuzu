@@ -7,7 +7,7 @@
   <!-- 完成 -->
   <swiper-item>
     <scroll-view class="hot-box" scroll-y="true">
-      <view  class="orderDetails" wx:for="{{contracts}}" wx:key="id" bindtap="gotoShow" data-id="{{item.id}}">
+      <view  class="orderDetails" wx:for="{{billings}}" wx:key="id" bindtap="gotoShow" data-id="{{item.id}}">
         <view class="orderListTitle">
           <text class="orderName">订单号: {{item.orderid}}</text>
           <text class="userName">{{item.title}}</text>
@@ -18,7 +18,7 @@
             <image src="{{item.url}}" background-size="cover"></image>
           </view> -->
           <view class="productInfo">
-            <view class="productTitle">房间号: {{item.room_id}}</view>
+            <view class="productTitle">房间号: {{item.contracts_title}}</view>
             <view class="productTitle">起始时间: {{item.begin_day}}</view>
             <view class="productPeople">结束时间: {{item.end_day}}</view>
           </view>

@@ -4,15 +4,14 @@ const {
 
 const app = getApp();
 
-// pages/ contract/contractShow/contractShow.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    contracts: [],
-    contractsList: {
+    billings: [],
+    billingsList: {
       realdy:[],
       wait: [],
       cancel: []
@@ -31,28 +30,28 @@ Page({
   onLoad: function (options) {
     var that = this
     request({
-        url: app.globalData.BaseURL + '/contracts/list',
+        url: app.globalData.BaseURL + '/billings/list',
         data: {},
         method: 'get',
         success: function (res) {
-          var contractsList = {
+          var billingsList = {
             realdy: [],
             wait: [],
             cancel: []
           }
           for (let i = 0; i < res.data.data.length; i++) {
             if(res.data.data[i]['status'] === "4") {
-              contractsList['realdy'].push(res.data.data[i])
+              billingsList['realdy'].push(res.data.data[i])
             } else if (res.data.data[i]['status'] === "2") {
-              contractsList['cancel'].push(res.data.data[i])
+              billingsList['cancel'].push(res.data.data[i])
             } else {
-              contractsList['wait'].push(res.data.data[i])
+              billingsList['wait'].push(res.data.data[i])
             }
           }
           that.setData({
-            contractsList: contractsList,
+            billingsList: billingsList,
           })
-          console.log(contractsList)
+          console.log(that.data.billingsList)
           that.orderShow()
         }
     })
@@ -93,25 +92,29 @@ Page({
   },
   gotoShow: function (e) {
     wx.navigateTo({
-      url: '/pages/contracts/show/show?id=' + e.currentTarget.dataset.id
+      url: '/pages/billings/show/show?id=' + e.currentTarget.dataset.id
     })
   },
   orderShow: function () {
     let that = this
     let data = {}
+    console.log(that.data.billingsList)
+    console.log(this.data.currtab)
     switch (this.data.currtab) {
       case 0:
-        data = that.data.contractsList['realdy']
+        data = that.data.billingsList['realdy']
         break
       case 1:
-        data = that.data.contractsList['wait']
+        data = that.data.billingsList['wait']
+        console.log(that.data.billingsList)
         break
       case 2:
-        data = that.data.contractsList['cancel']
+        data = that.data.billingsList['cancel']
         break
     }
+    console.log(data)
     that.setData({
-      contracts: data
+      billings: data
     })
   },
 })

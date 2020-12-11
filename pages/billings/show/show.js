@@ -1,4 +1,3 @@
-// pages/billings/show/show.js
 Page({
 
   /**
@@ -21,7 +20,19 @@ Page({
   onReady: function () {
 
   },
-
+delete:function(){
+    wx.showModal({
+    title: '提示',
+    content: '确定删除该项吗',
+    success: function (sm) {
+    if (sm.confirm) {
+    console.log("用户点击确定")
+    } else if (sm.cancel) {
+    console.log('用户点击取消')
+    }
+    }
+    })
+},
   /**
    * 生命周期函数--监听页面显示
    */

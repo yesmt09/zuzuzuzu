@@ -24,7 +24,7 @@
 			<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
 			<text>合同管理</text>
 		</navigator>
-		<navigator class="btn-hover" url="../finances/show/finance">
+		<navigator class="btn-hover" url="/pages/billings/list/list">
 			<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
 			<text>费用管理</text>
 		</navigator>
