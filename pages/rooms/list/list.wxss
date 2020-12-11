@@ -108,7 +108,6 @@ padding: 0 20rpx;
   flex: 4;
   margin: 10rpx 10px 5px 30rpx;
   font-size:10px;
- 
 }
  
 .orderListDetails view {

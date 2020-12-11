@@ -7,7 +7,7 @@
 		</navigator>
 		<navigator url="../contract/contractShow/contractShow" hover-class="none">
 			<text>0</text>
-			<text  class="money">本月应收</text>
+			<text class="money">本月应收</text>
 		</navigator>
 		<navigator url="../contract/contractShow/contractShow" hover-class="none">
 			<text>0</text>
@@ -18,15 +18,39 @@
 	<view class="kjContent">
 		<navigator class="btn-hover" url="../contracts/show/contract">
 			<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
-		<text>生成合同</text>
-	</navigator>
-	<navigator class="btn-hover" url="/pages/contracts/list/list">
-		<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
-		<text>合同管理</text>
-	</navigator>
-	<navigator class="btn-hover" url="../finances/show/finance">
-		<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
-		<text>费用管理</text>
-	</navigator>
+			<text>生成合同</text>
+		</navigator>
+		<navigator class="btn-hover" url="/pages/contracts/list/list">
+			<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
+			<text>合同管理</text>
+		</navigator>
+		<navigator class="btn-hover" url="../finances/show/finance">
+			<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
+			<text>费用管理</text>
+		</navigator>
+	</view>
+	<view class="divLine"></view>
+	<view class='top'>
+		<!-- 下拉框 -->
+		<view class='top-selected' bindtap='bindShowMsg'>
+			<text>{{grade_name}}</text>
+			<image src=''></image>
+		</view>
+		<!-- 下拉需要显示的列表 -->
+		<view class="select_box" wx:if="{{select}}">
+			<view wx:for="{{grades}}" wx:key="unique">
+				<view class="select_one" bindtap="mySelect" data-name="{{key}}">{{item}}</view>
+			</view>
+		</view>
+
+		<view class='page_row' bindtap="suo">
+			<view class="search">
+				<view class="df search_arr">
+					<icon class="searchcion" size='20' type='search'></icon>
+					<input class="" placeholder="请输入关键字" value="{{searchValue}}" />
+				</view>
+			</view>
+			<view class='sousuo'>搜索</view>
+		</view>
 	</view>
 </view>

@@ -1,4 +1,10 @@
 // pages/ contract/contractShow/contractShow.js
+const {
+  request
+} = require("../../utils/util")
+
+var app = getApp()
+
 Page({
 
   /**
@@ -12,7 +18,8 @@ Page({
     grade_name:'已逾期',
     grades: [
         '快到期',
-        '已到期'
+        '已到期',
+        '空闲中',
       ]
   },/**
  *  点击下拉框
@@ -26,11 +33,18 @@ Page({
  * 已选下拉框
  */
   mySelect(e) {
-    console.log(e)
-    var name = e.currentTarget.dataset.name
+    var id = e.currentTarget.dataset.id
     this.setData({
-      grade_name: name,
+      grade_name: this.data.grades[id],
       select: false
+    })
+    request({
+      url: app.globalData.BaseURL + '',
+      method: 'get',
+      data: {
+        type: id,
+        content: searchValue
+      }
     })
   },
 
