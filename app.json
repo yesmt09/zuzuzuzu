@@ -4,7 +4,7 @@
     "pages/login/login",
     "pages/contracts/show/show",
     "pages/contracts/list/list",
-    "pages/finances/show/finance",
+    "pages/billings/show/show",
     "pages/user/show/user",
     "pages/rooms/list/list",
     "pages/rooms/show/show"
@@ -12,9 +12,9 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#108ee9",
-    "navigationBarTitleText": "审批",
+    "navigationBarTitleText": "爱家公寓微信小程序",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#999999",

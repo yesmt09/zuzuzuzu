@@ -1,0 +1,61 @@
+.ysMoney{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+  background:   #f2f2f2;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 10rpx;
+}
+.share {
+
+  height: 58rpx;
+  line-height: 58rpx;
+  border-radius: 10rpx;
+  background:#ff656f ;
+  color: #fff;
+  padding: 0 10rpx;
+}
+.red {
+  color: #ff656f;
+  font-size:44rpx;
+  padding-right: 10rpx;
+}
+.zdtitle{
+margin-top: 20rpx;
+  padding-left: 20rpx;
+  font-weight: bold;
+}
+.mx{
+  padding: 20rpx;
+}
+.mxList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56rpx;
+  line-height: 56rpx;
+  /* margin-bottom: 14rpx; */
+  border-bottom: 1rpx solid #f2f2f2;
+  font-size: 28rpx;
+}
+.shoukuanBottom {
+  position: fixed;
+  bottom:0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.delete,.rushRent,.renewal{
+  width: 20%;
+  text-align: center;
+  font-size: 28rpx;
+}
+.confirm {
+  background: #ff656f;
+  color: #fff;
+  width: 40%;
+  border-radius: 0;
+}
