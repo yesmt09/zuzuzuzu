@@ -1,17 +1,37 @@
+const { request } = require("../../../utils/util");
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      billing_id = 0,
+      billingInfo = {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var id = options.id;
+    var that = this
+    this.setData({
+      billing_id: id
+    })
+    request({
+      url: app.globalData.BaseURL + '/billings/one',
+      method: 'get',
+      data: {
+        id: id
+      },
+      success: function (res) {
+          that.setData({
+            billingInfo: res.data.data
+          })
+      }
+    })
   },
 
   /**
@@ -20,19 +40,19 @@ Page({
   onReady: function () {
 
   },
-delete:function(){
+  delete: function () {
     wx.showModal({
-    title: '提示',
-    content: '确定删除该项吗',
-    success: function (sm) {
-    if (sm.confirm) {
-    console.log("用户点击确定")
-    } else if (sm.cancel) {
-    console.log('用户点击取消')
-    }
-    }
+      title: '提示',
+      content: '确定删除该项吗',
+      success: function (sm) {
+        if (sm.confirm) {
+          console.log("用户点击确定")
+        } else if (sm.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
-},
+  },
   /**
    * 生命周期函数--监听页面显示
    */
