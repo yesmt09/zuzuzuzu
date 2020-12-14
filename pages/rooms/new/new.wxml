@@ -1,0 +1,32 @@
+<view class="fz">
+  <radio></radio>
+  <view>
+    <view>房间号: <text>{{dataInfo.number}}</text></view>
+    <view>2011-1-1 第三次房租</view>
+  </view>
+</view>
+<view class="allPrice">总计：<text>{{dataInfo.contract.rent_num}}元</text></view>
+<view class="beizhu">
+  <text>开票人:</text>
+  <view>{{dataInfo.describe}}</view>
+</view>
+<view class="beizhu">
+  <text>备注：</text>
+  <textarea>{{dataInfo.describe}}</textarea>
+</view>
+<view class="flexItem rowStyle marginBottom10 cellStyle ">
+  <label class="fontSize14">开票日期 </label>
+  <view class="picker_group" >
+    <picker mode="date" value="{{dataInfo.contract.billings_begin_day}}"  disabled="true">
+    <view class="picker ">
+      <label class="fontSize14">{{dataInfo.contract.billings_begin_day}}</label>
+    </view>
+  </picker>
+  至  
+  <picker mode="date" value="{{dataInfo.contract.billings_begin_day}}"  disabled="true">
+    <view class="picker ">
+      <label class="fontSize14">{{dataInfo.contract.billings_begin_day}}</label>
+    </view>
+  </picker>
+  </view>
+</view>

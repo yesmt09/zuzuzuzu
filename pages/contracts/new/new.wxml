@@ -5,30 +5,35 @@
 </view>
 
 <view class="add-page">
-  <form bindsubmit="submitForm">
+  <form bindsubmit="submitForm" >
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
     <view class="mod-a">
       <view class="mod t-name" >
         <text class="key">房间号</text>
-        <input name="title" class="input" maxlength="100" placeholder="房间号" value="{{title}}" />
-        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+        
+        <view class='select_box'>
+          <view class='select' catchtap='selectTap'>
+              <text class='select_text'>{{roomList[selectIndex].number}}</text>
+          </view>
+          <view class='option_box' style='height:{{selectShow?(roomList.length>5?325:roomList.length*50):0}}rpx;'>
+              <text class='option' wx:for='{{roomList}}' wx:key='this' data-index='{{selectIndex}}' catchtap='optionTap'>{{item.number}}</text>
+          </view>
+        </view>
+
       </view>
       <view class="mod t-name">
         <text class="key">合同名称</text>
-        <input name="title" class="input" maxlength="100" placeholder="请输入合同名称" value="{{title}}" />
-        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+        <input name="title" class="input" maxlength="100" placeholder="请输入合同名称" value="租住{{roomList[selectIndex].number}}房屋合同" />
       </view>
     </view>
     <view class="mod-a mt20">
       <view class="mod t-name">
         <text class="key">手机号</text>
-        <input name="peoplenum" type="number" class="input" maxlength="100" placeholder='请输入联系手机号' value="{{peoplenum}}" />
-        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+        <input name="phone" type="number" class="input" maxlength="100" placeholder='请输入联系手机号' bindtap="bindPhoneChange" value="{{phone}}" />
       </view>
       <view class="mod t-name">
         <text class="key">微信</text>
-        <input name="peoplenum" type="number" class="input"  maxlength="100" placeholder="请输入微信号码" value="{{contactValue}}"/>
-        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+        <input name="wx" type="number" class="input"  maxlength="100" placeholder="请输入微信号码" bindtap="bindWxChange" value="{{wx}}"/>
       </view>
       
       <!-- 有效时间 -->
@@ -36,7 +41,6 @@
         <text class="key">起始时间</text>
         <picker mode="date" value="{{begin_day}}" start="{{begin_day}}" bindchange="bindBeginDayChange">
           <view class="value" name="begin_day">{{begin_day}}
-            <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
           </view>
         </picker>
       </view>
@@ -44,15 +48,13 @@
         <text class="key">截止时间</text>
         <picker mode="date" value="{{end_day}}" start="{{end_day}}" bindchange="bindEndDayChange">
           <view class="value" name="end_day">{{end_day}}
-            <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
           </view>
         </picker>
       </view>
       <!-- 人数设置 -->
         <view class="mod t-name">
           <text class="key">人数设置</text>
-          <input name="peoplenum" type="number" class="input" maxlength="100" placeholder='请输入限制住宿人数' value="{{peoplenum}}" />
-          <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+          <input name="peoplenum" type="number" class="input" maxlength="100" bindinput="changePeoplenum" placeholder='请输入限制住宿人数' value="{{peoplenum}}" />
         </view>
       </view>
 
@@ -68,7 +70,7 @@
     </view>
     <view wx:if="{{isSrc}}" class="image_box">
       <view class="picPre">
-        <image src="{{src}}" mode="aspectFit"></image>
+        <image src="{{images}}" mode="aspectFit"></image>
         <view bindtap="clearPic"></view>
       </view>
     </view>
@@ -78,23 +80,30 @@
       <view class="mod t-name">
         <text class="key">真实姓名</text>
         <input name="realname" class="input" maxlength="100" placeholder="请输入真实姓名" value="{{realname}}"/>
-        <image class="arrow-r" src="../../images/arrow-r-0.png"></image>
       </view>
       <view class="mod-a"></view>
       <view class="mod t-name">
         <text class="key">身份证号</text>
         <input name="contactValue" class="input" placeholder="请输入身份证号码" value="{{contactValue}}"/>
-        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
       </view>
-      <view class="add_pic t-code" bindtap="uploadCodePic" wx-if="{{!isCodeSrc}}">
-      <view class='code'>上传身份证照片</view>
-    </view>
-    <view wx:if="{{isCodeSrc}}" class="image_box">
-      <view class="picPre">
-        <image src="{{codeSrc}}" mode="aspectFit"></image>
-        <view bindtap="clearCodePic"></view>
+      <view class="add_pic t-code" bindtap="uploadIdcardImg0" wx-if="{{!idcard_img_0}}">
+        <view class='code'>身份证正面</view>
       </view>
-    </view>
+      <view wx:if="{{idcard_img_0}}" class="image_box">
+        <view class="picPre">
+          <image src="{{idcard_img_0}}" mode="aspectFit"></image>
+          <view bindtap="clearCodePic"></view>
+        </view>
+      </view>
+      <view class="add_pic t-code" bindtap="uploadIdcardImg1" wx-if="{{!idcard_img_1}}">
+        <view class='code'>身份证反面</view>
+      </view>
+      <view wx:if="{{idcard_img_1}}" class="image_box">
+        <view class="picPre">
+          <image src="{{idcard_img_1}}" mode="aspectFit"></image>
+          <view bindtap="clearCodePic"></view>
+        </view>
+      </view>
     </view>
 
     <view class="mod-a mt20">

@@ -12,19 +12,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    contract_id: 0,
+    showTopTips: false,
+    isdisabled: false,
+    TopTips: '',
     notice_status: false,
-    accountIndex: 0,
-    peopleHide: false,
     isAgree: false,
+    title: '',
+    phone: '',
+    wx: '',
     begin_day: formate_data(myDate),
     end_day: formate_data(myDate),
-    showTopTips: false,
-    TopTips: '',
-    noteMaxLen: 200,//备注最多字数
+    peoplenum: 2,
     content: "",
+    images: [],
     noteNowLen: 0,//备注当前字数
-    showInput: false,//显示输入真实姓名,
+    idcard: '',//显示输入真实姓名,,
+    realname: '',//显示输入真实姓名,,
+    idcard_img_0: '',
+    idcard_img_1: '',
+    roomList: [],
+    selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
+    selectIndex: 0,//选择的下拉列表下标
+    noteMaxLen: 200,//备注最多字数
   },
   
   tapNotice: function (e) {
@@ -60,26 +69,12 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    
     that.setData({//初始化数据
-      src: "",
-      isSrc: false,
-      ishide: "0",
-      autoFocus: true,
       isLoading: false,
       loading: true,
-      isdisabled: false,
-      contract_id: options.id
-    })
-    request({
-      url: app.globalData.BaseURL + '',
-      method: 'get',
-      data: {
-        id : options.id,
-      },
-      success: function (res) {
-
-      }
+      showTopTips: false,
+      TopTips: '',
+      notice_status: false,
     })
   },
 
@@ -87,27 +82,40 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.hideToast()
+    // wx.hideToast()
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var myInterval = setInterval(getReturn, 500); ////半秒定时查询
-    function getReturn() {
-      wx.getStorage({
-        key: 'user_openid',
-        success: function (ress) {
-          if (ress.data) {
-            clearInterval(myInterval)
-            that.setData({
-              loading: true
-            })
-          }
-        }
-      })
-    }
+    request({
+      url: app.globalData.BaseURL + '/rooms/list',
+      method: 'get',
+      data:{
+        status: 1
+      },
+      success: function (res) {
+        that.setData({
+          roomList: res.data.data
+        })
+      }
+    })
+  },
+
+  // 点击下拉显示框
+  selectTap() {
+    this.setData({
+      selectShow: !this.data.selectShow
+    });
+  },
+  // 点击下拉列表
+  optionTap(e) {
+    let index = e.currentTarget.dataset.index;//获取点击的下拉列表的下标
+    this.setData({
+      selectIndex: index,
+      selectShow: !this.data.selectShow
+    });
   },
 
   //上传活动图片
@@ -119,9 +127,9 @@ Page({
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
+        let images = that.data.images
         that.setData({
-          isSrc: true,
-          src: tempFilePaths
+          images: images.push(tempFilePaths)
         })
       }
     })
@@ -130,13 +138,12 @@ Page({
   //删除图片
   clearPic: function () {//删除图片
     that.setData({
-      isSrc: false,
-      src: ""
+      images: []
     })
   },
 
-  //上传活动群二维码
-  uploadCodePic: function () {//选择图标
+  //上传身份证正面
+  uploadIdcardImg1: function () {//选择图标
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['compressed'],//压缩图
@@ -145,32 +152,41 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         that.setData({
-          isCodeSrc: true,
-          codeSrc: tempFilePaths
+          idcard_img_1: tempFilePaths
         })
       }
     })
   },
 
-  //删除活动群二维码
+    //上传身份证反面
+    uploadIdcardImg1: function () {//选择图标
+      wx.chooseImage({
+        count: 1, // 默认9
+        sizeType: ['compressed'],//压缩图
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var tempFilePaths = res.tempFilePaths
+          that.setData({
+            idcard_img_0: tempFilePaths
+          })
+        }
+      })
+    },
+
+  //删除身份证正反面照片
   clearCodePic: function () {
     that.setData({
-      isCodeSrc: false,
-      codeSrc: ""
+      idcard_img_0: "",
+      idcard_img_1: ""
     })
   },
 
   //限制人数
-  switch1Change: function (e) {
-    if (e.detail.value == false) {
-      this.setData({
-        peopleHide: false
-      })
-    } else if (e.detail.value == true) {
-      this.setData({
-        peopleHide: true
-      })
-    }
+  changePeoplenum: function (e) {
+    this.setData({
+      peoplenum: e.detail.value
+    })
   },
 
   bindBeginDayChange: function (e) {
@@ -183,13 +199,19 @@ Page({
       end_day: e.detail.value
     })
   },
-  //改变联系方式
-  bindAccountChange: function (e) {
+  //改变手机号  
+  bindPhoneChange: function (e) {
     this.setData({
-      accountIndex: e.detail.value
+      phone: e.detail.value
     })
   },
+  //改变微信联系方式
 
+  bindWxChange: function (e) {
+    this.setData({
+      wx: e.detail.value
+    })
+  },
   //同意相关条例
   bindAgreeChange: function (e) {
     this.setData({
@@ -222,27 +244,18 @@ Page({
       return;
     }
     var title = e.detail.value.title;
-    var endtime = this.data.date;
-    var typeIndex = this.data.typeIndex;
-    var acttype = 1 + parseInt(typeIndex);
-    var switchHide = e.detail.value.switchHide;
+    var end_day = e.detail.value.end_day;
+    var begn_day = e.detail.value.begn_day;
     var peoplenum = e.detail.value.peoplenum;
-    console.log(peoplenum);
     var content = e.detail.value.content;
     //------发布者真实信息------
     var realname = e.detail.value.realname;
-    var contactindex = this.data.accountIndex;
-    if (contactindex == 0) {
-      var contactWay = "微信号";
-    } else if (contactindex == 1) {
-      var contactWay = "QQ号";
-    } else if (contactindex == 2) {
-      var contactWay = "手机号";
-    }
-    var contactValue = e.detail.value.contactValue;
+    var idcard = e.detail.value.idcard;
+    var phone = e.detail.value.phone;
+    var wx = e.detail.value.wx;
+
     var wxReg = new RegExp("^[a-zA-Z]([-_a-zA-Z0-9]{5,19})+$");
-    var qqReg = new RegExp("[1-9][0-9]{4,}");
-    var phReg = /^1[34578]\d{9}$/;
+    var phoneReg = /^1[34578]\d{9}$/;
     var nameReg = new RegExp("^[\u4e00-\u9fa5]{2,4}$");
     //先进行表单非空验证
     if (title == "") {
@@ -250,12 +263,7 @@ Page({
         showTopTips: true,
         TopTips: '请输入主题'
       });
-    } else if (address == '点击选择位置') {
-      this.setData({
-        showTopTips: true,
-        TopTips: '请选择地点'
-      });
-    } else if (switchHide == true && peoplenum == "") {
+    } else if (peoplenum == false) {
       this.setData({
         showTopTips: true,
         TopTips: '请输入人数'
@@ -263,7 +271,7 @@ Page({
     } else if (content == "") {
       this.setData({
         showTopTips: true,
-        TopTips: '请输入活动内容'
+        TopTips: '请输入补充内容'
       });
     }else if (realname == "") {
       this.setData({
@@ -275,152 +283,25 @@ Page({
         showTopTips: true,
         TopTips: '真实姓名一般为2-4位汉字'
       });
-    } else if (contactValue == "") {
+    } else if (idcard == "") {
       this.setData({
         showTopTips: true,
-        TopTips: '请输入联系方式'
+        TopTips: '请输入身份号'
       });
-    } else if (contactWay == "微信号" && !wxReg.test(contactValue)) {
+    } else if ( !wxReg.test(wx)) {
       this.setData({
         showTopTips: true,
         TopTips: '微信号格式不正确'
       });
-    } else if (contactWay == "手机号" && !phReg.test(contactValue)) {
+    } else if (!phoneReg.test(phone)) {
       this.setData({
         showTopTips: true,
         TopTips: '手机号格式不正确'
       });
-    } else if (contactWay == "QQ号" && !qqReg.test(contactValue)) {
-      this.setData({
-        showTopTips: true,
-        TopTips: 'QQ号格式不正确'
-      });
     } else {
-      console.log('校验完毕');
       that.setData({
         isLoading: true,
         isdisabled: true
-      })
-      //向 Events 表中新增一条数据
-      wx.getStorage({
-        key: 'user_id',
-        success: function (ress) {
-          var Diary = Bmob.Object.extend("Events");
-          var diary = new Diary();
-          var me = new Bmob.User();
-          me.id = ress.data;
-          diary.set("title", title);
-          diary.set("endtime", endtime);
-          diary.set("acttype", acttype + "");
-          diary.set("isShow",1);
-          diary.set("address", address);
-          diary.set("longitude", longitude);//经度
-          diary.set("latitude", latitude);//纬度\
-          if (that.data.peopleHide) { //如果设置了人数
-            diary.set("peoplenum", peoplenum);
-          } else if (!that.data.peopleHide) {
-            diary.set("peoplenum", "-1");
-          }
-          diary.set("content", content);
-          diary.set("publisher", me);
-          diary.set("likenum", 0);
-          diary.set("commentnum", 0);
-          diary.set("liker", []);
-          diary.set("joinnumber", 0); //发布后初始加入人数为0
-          diary.set("joinArray", []);
-          if (that.data.isSrc == true) {
-            var name = that.data.src; //上传图片的别名
-            var file = new Bmob.File(name, that.data.src);
-            file.save();
-            diary.set("actpic", file);
-          }
-          //新增操作
-          diary.save(null, {
-            success: function (result) {
-              //活动扩展表中添加一条记录
-              var Diary = Bmob.Object.extend("EventMore");
-              var query = new Diary();
-              var Events = Bmob.Object.extend("Events");
-              var event = new Events();
-              event.id = result.id;
-              query.set("Status", 0);
-              query.set("Statusname", "准备中");
-              query.set("event", event);
-              //如果上传了群二维码
-              if (that.data.isCodeSrc == true) {
-                var name = that.data.codeSrc; //上传图片的别名
-                var file = new Bmob.File(name, that.data.codeSrc);
-                file.save();
-                query.set("qrcode", file);
-              }
-              query.save();
-
-              //再将发布者的信息添加到联系表中
-              wx.getStorage({
-                key: 'user_id',
-                success: function (ress) {
-                  var Contacts = Bmob.Object.extend("Contacts");
-                  var contact = new Contacts();
-                  var Events = Bmob.Object.extend("Events");
-                  var event = new Events();
-                  event.id = result.id;
-                  var me = new Bmob.User();
-                  me.id = ress.data;
-                  contact.set("publisher", me); //发布人是自己
-                  contact.set("currentUser", me); //参加的人也是自己
-                  contact.set("event", event);
-                  contact.set("realname", realname);
-                  contact.set("contactWay", contactWay);
-                  contact.set("contactValue", contactValue);
-                  contact.save();
-                },
-              })
-
-              console.log("发布成功,objectId:" + result.id);
-              that.setData({
-                isLoading: false,
-                isdisabled: false,
-                eventId: result.id,
-              })
-              //添加成功，返回成功之后的objectId(注意，返回的属性名字是id,而不是objectId)
-              common.dataLoading("发起成功", "success", function () {
-                //重置表单
-                that.setData({
-                  title: '',
-                  typeIndex: 0,
-                  address: '点击选择位置',
-                  longitude: 0, //经度
-                  latitude: 0,//纬度
-                  data: formate_data(myDate),
-                  isHide: true,
-                  peoplenum: 0,
-                  peopleHide: false,
-                  isAgree: false,
-                  accountIndex: 0,
-                  realname: "",
-                  content: "",
-                  contactValue: '',
-                  noteNowLen: 0,
-                  showInput: false,
-                  src: "",
-                  isSrc: false,
-                  codeSrc: "",
-                  isCodeSrc: false
-
-                })
-              });
-            },
-            error: function (result, error) {
-              //添加失败
-              console.log("发布失败=" + error);
-              common.dataLoading("发起失败", "loading");
-              that.setData({
-                isLoading: false,
-                isdisabled: false
-              })
-            }
-          })
-        },
       })
     }
     setTimeout(function () {
