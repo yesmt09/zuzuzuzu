@@ -166,3 +166,7 @@
 .cz{
   font-size: 20rpx
 }
+.list-item navigator {
+  display: flex;
+  align-items: center;
+}

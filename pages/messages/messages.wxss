@@ -1,0 +1,40 @@
+.message_wrap image {
+  width: 100rpx;
+  height: 100rpx;
+  padding-right: 10rpx;
+}
+.message_wrap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding:  20rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.message_left {
+  display: flex;
+  align-items: center;
+}
+.message_left text {
+  display: block;
+}
+.message_wrap {
+  position: relative;
+}
+.circletip {
+  position: absolute;
+  top: 22rpx;
+  left: 82rpx;
+  width: 28rpx;
+  height: 28rpx;
+  background: rgba(238, 36, 36, 0.897);
+  border-radius: 50%;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(104, 10, 23, 0.2);
+  -webkit-box-shadow: 0 4px 8px rgba(104, 10, 23, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+}

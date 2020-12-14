@@ -40,23 +40,16 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.6.6",
-  "appid": "wxcd1f4cb09439e413",
+  "appid": "wx17a87e5a0e542763",
   "projectname": "%E7%A7%9F%E5%AE%A2%E7%AE%A1%E7%90%86",
   "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
-      "currentL": -1,
       "list": []
     },
     "gamePlugin": {
@@ -110,6 +103,11 @@
           "name": "pages/index/index",
           "pathName": "pages/index/index",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/messages/messages",
+          "pathName": "pages/messages/messages",
           "scene": null
         }
       ]
