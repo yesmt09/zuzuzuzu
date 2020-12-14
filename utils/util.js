@@ -14,9 +14,14 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-function formate_data(myDate) {
-  let month_add = myDate.getMonth() + 1;
-  var formate_result = myDate.getFullYear() + '-'
+function formate_data(myDate, month = 1) {
+  let month_add = myDate.getMonth() + month;
+  let year_add = myDate.getFullYear();
+  if (month_add > 12) {
+    year_add = year_add + 1
+    month_add = 1;
+  }
+  var formate_result = year_add + '-'
     + month_add + '-'
     + myDate.getDate()
   return formate_result;
@@ -72,7 +77,6 @@ function request({
 module.exports.request = request
 
 function getUserInfo(app) {
-  console.log(app)
   wx.getUserInfo({
     success: userInfo => {
       if (userInfo.errMsg != 'getUserInfo:ok') {

@@ -23,13 +23,6 @@ Page({
 
   onShow: function () {
     var that = this
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var that = this
     request({
         url: app.globalData.BaseURL + '/rooms/list',
         data: {},
@@ -57,6 +50,13 @@ Page({
           })
         }
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
   onReady: function () {
     // 页面渲染完成

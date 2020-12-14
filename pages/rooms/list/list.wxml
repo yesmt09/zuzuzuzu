@@ -11,7 +11,7 @@
 	</view>
 	<navigator class="addhouse"><text>+</text>添加房源</navigator>
 <view class="choose">筛选：<input type="text" placeholder="请输入房间号"></input></view>
-<view class="house-show"  wx:for="{{roomsData}}" wx:key="{{id}}" bindtap="gotoShow" data-id="{{item.id}}">
+<view class="house-show" wx:for="{{roomsData}}" wx:key="{{item.id}}" bindtap="gotoShow" data-id="{{item.id}}">
 	<text class="title">{{item.number}}</text>
 	<view class="tb-toppest">
 		<navigator url="#" hover-class="none">
