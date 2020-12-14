@@ -1,36 +1,30 @@
-<view class="swiper-tab">
-  <block wx:for="{{swipertab}}" wx:key="sptab">
-    <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
-  </block>
+<view class="house-wrap"></view>
+	<view class="house">
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+
+			<text class="money">在租房屋</text> <text class="zz">{{roomsList['expire'].length + roomsList['ing'].length}}</text>
+		</navigator>
+		<navigator url="../contract/contractShow/contractShow" hover-class="none">
+
+			<text class="money">闲置房屋</text> <text class="xz">{{roomsList['free'].length}}</text>
+		</navigator>
+	</view>
+	<navigator class="addhouse"><text>+</text>添加房源</navigator>
+<view class="choose">筛选：<input type="text" placeholder="请输入房间号"></input></view>
+<view class="house-show"  wx:for="{{roomsData}}" wx:key="{{id}}" bindtap="gotoShow" data-id="{{item.id}}">
+	<text class="title">{{item.number}}</text>
+	<view class="tb-toppest">
+		<navigator url="#" hover-class="none">
+			<view><text class="num">{{item.contract.billings_payment_num}}</text>元</view>
+			<text class="money">上月收入</text>
+		</navigator>
+		<navigator url="#" hover-class="none">
+			<view><text class="num">0</text>元</view>
+			<text  class="money">本月应收</text>
+		</navigator>
+		<navigator url="#" hover-class="none">
+			<view><text class="num">0</text>度</view>
+			<text class="money">上月电费</text>
+		</navigator>
+	</view>
 </view>
-<swiper class="swiper-box" duration="300" style="height:{{deviceH-31}}px">
-  <!-- 完成 -->
-  <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
-      <view  class="orderDetails" wx:for="{{rooms}}" wx:key="id" bindtap="gotoShow" data-id="{{item.id}}">
-        <view class="orderListTitle">
-          <text class="orderName">订单号: </text>
-          <text class="userName"></text>
-          <text class="orderStatus"></text>
-        </view>
-        <view class="orderListDetails">
-          <!-- <view class="productImg">
-            <image src="{{item.url}}" background-size="cover"></image>
-          </view> -->
-          <view class="productInfo">
-            <view class="productTitle">房间号: </view>
-            <view wx:if="{{currtab == 2}}">
-              <view class="productTitle">起始时间: </view>
-              <view class="productPeople">结束时间:</view>
-            </view>
-          </view>
-        </view>
-        <view class="productCount">
-          <view>
-            合计：<text class="money">￥{{item.price}}</text>
-          </view>
-        </view>
-      </view>
-    </scroll-view>
-  </swiper-item>
-</swiper>

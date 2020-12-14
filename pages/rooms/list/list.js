@@ -16,6 +16,7 @@ Page({
       expire: [],
       ing: []
     },
+    roomsData: [],
     currtab: 0,
     swipertab: [{ name: '空闲中', index: 0 }, { name: '快到期', index: 1 }, { name: '在租中', index: 2 }],
   },
@@ -51,9 +52,9 @@ Page({
             }
           }
           that.setData({
+            roomsData: res.data.data,
             roomsList: roomsList,
           })
-          that.orderShow()
         }
     })
   },
@@ -76,41 +77,9 @@ Page({
       }
     })
   },
-  /**
-  * @Explain：选项卡点击切换
-  */
-  tabSwitch: function (e) {
-    var that = this
-    if (this.data.currtab === e.target.dataset.current) {
-      return false
-    } else {
-      that.setData({
-        currtab: e.target.dataset.current
-      })
-      this.orderShow()
-    }
-  },
   gotoShow: function (e) {
     wx.navigateTo({
       url: '/pages/rooms/show/show?id=' + e.currentTarget.dataset.id
     })
-  },
-  orderShow: function () {
-    let that = this
-    let data = {}
-    switch (this.data.currtab) {
-      case 0:
-        data = that.data.roomsList['free']
-        break
-      case 1:
-        data = that.data.roomsList['expire']
-        break
-      case 2:
-        data = that.data.roomsList['ing']
-        break
-    }
-    that.setData({
-      rooms: data
-    })
-  },
+  }
 })

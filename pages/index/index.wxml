@@ -16,7 +16,7 @@
 	</view>
 	<view class="kj">快捷操作</view>
 	<view class="kjContent">
-		<navigator class="btn-hover" url="../contracts/show/contract">
+		<navigator class="btn-hover" url="/pages/contracts/new/new">
 			<text class="iconfont icon-zonghekongzhitai typeIn" style="display:flex; margin:0 auto"></text>
 			<text>生成合同</text>
 		</navigator>

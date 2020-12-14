@@ -1,3 +1,6 @@
+const { request } = require("../../../utils/util");
+const app = getApp();
+
 // pages/zhangdan/zhangdan.js
 Page({
 
@@ -17,14 +20,19 @@ Page({
     that.setData({
       id: options.id
     })
+    request({
+      url: app.globalData.BaseURL + '/rooms/one',
+      method: 'get',
+      data: {
+        id: options.id
+      },
+      success: function (res) {
+          that.setData({
+            dataInfo: res.data.data
+          })
+      }
+    })
   },
-//  点击日期从组件确定事件  
-bindDateChangeStart: function(e) {
-  console.log(e.detail.value)
-  this.setData({
-    datestart: e.detail.value
-  })
-},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

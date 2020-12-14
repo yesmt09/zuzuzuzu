@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-      billing_id = 0,
-      billingInfo = {}
+      billing_id: 0,
+      billingInfo: {}
   },
 
   /**

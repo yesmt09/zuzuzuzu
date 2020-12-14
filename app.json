@@ -4,21 +4,25 @@
     "pages/login/login",
     "pages/contracts/show/show",
     "pages/contracts/list/list",
+    "pages/contracts/new/new",
     "pages/billings/show/show",
+    "pages/billings/list/list",
+    "pages/billings/new/new",
     "pages/user/show/user",
     "pages/rooms/list/list",
-    "pages/rooms/show/show"
+    "pages/rooms/show/show",
+    "pages/rooms/new/new"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#108ee9",
+    "navigationBarBackgroundColor": "#ff656f",
     "navigationBarTitleText": "爱家公寓微信小程序",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#108ee9",
+    "selectedColor": "#FE5555",
     "backgroundColor": "#fff",
     "borderStyle": "white",
     "debug": "ture",
