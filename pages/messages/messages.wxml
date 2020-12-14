@@ -1,0 +1,24 @@
+<view>
+  <navigator class="message_wrap">
+  	<view class="circletip">0</view>
+    <view class="message_left">
+    <image src="../../static/images/approve.png"/>
+    <view>
+      <text class="message_title">账单消息</text>
+      <text class="message_detail">kdkkdk</text>
+    </view>
+  </view>
+    <text class="time">112</text>
+  </navigator>
+  <navigator class="message_wrap">
+  	<view class="circletip">0</view>
+    <view class="message_left">
+    <image src="../../static/images/approve.png"/>
+    <view>
+      <text class="message_title">账单消息</text>
+      <text class="message_detail">kdkkdk</text>
+    </view>
+  </view>
+    <text class="time">112</text>
+  </navigator>
+</view>

@@ -11,7 +11,8 @@
     "pages/user/show/user",
     "pages/rooms/list/list",
     "pages/rooms/show/show",
-    "pages/rooms/new/new"
+    "pages/rooms/new/new",
+    "pages/messages/messages"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -35,6 +35,12 @@
       <image class="item-image" src="/static/images/kefu.png"></image>
       <text class="item-text">在线客服</text>
     </view>
+    <view class="list-item">
+    <navigator url="../../messages/messages" hover-class="none">
+      <image class="item-image" src="/static/images/kefu.png"></image>
+      <text class="item-text">消息</text>
+    </navigator>
+    </view>
   </view>
   <view class="separate"></view>
 </view>
