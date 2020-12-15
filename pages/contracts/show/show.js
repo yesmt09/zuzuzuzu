@@ -14,7 +14,6 @@ Page({
     contract: {},
     showTopTips: false,
     TopTips: '',
-    noteMaxLen: 200,//备注最多字数
   },
   
   tapNotice: function (e) {

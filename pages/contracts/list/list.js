@@ -18,7 +18,7 @@ Page({
       cancel: []
     },
     currtab: 0,
-    swipertab: [{ name: '已完成', index: 0 }, { name: '待付款', index: 1 }, { name: '已取消', index: 2 }],
+    swipertab: [{ name: '合约进行中', index: 0 }, { name: '即将过期', index: 1 }, { name: '已过期', index: 2 }],
   },
 
   onShow: function () {

@@ -66,7 +66,6 @@ Page({
     that = this;
     that.setData({ //初始化数据
       isLoading: false,
-      loading: true,
       showTopTips: false,
       TopTips: '',
       notice_status: false,
@@ -96,9 +95,17 @@ Page({
         status: 1
       },
       success: function (res) {
-        that.setData({
-          roomList: res.data.data
-        })
+        if (res.data.data.length === 0) {
+          that.setData({
+            showTopTips: true,
+            TopTips: '无房间可出租',
+            isLoading: true,
+          });
+        } else {
+          that.setData({
+            roomList: res.data.data
+          })
+        }
       }
     })
 
@@ -111,6 +118,16 @@ Page({
           userList: res.data.data
         })
       }
+    })
+  },
+  bindBeginDayChange(e) {
+    this.setData({
+      begin_day: e.detail.value
+    })
+  },
+  bindEndDayChange(e) {
+    this.setData({
+      end_day: e.detail.value
     })
   },
 
@@ -206,7 +223,6 @@ Page({
     })
   },
   bindAgreeChange: function(){
-    console.log(this.data.agreeButton)
     that.setData({
       agreeButton: !this.data.agreeButton
     })
@@ -226,7 +242,7 @@ Page({
   //提交表单
   submitForm: function (e) {
     var that = this;
-
+    console.log(e)
     if (that.data.agreeButton == false) {
       this.setData({
         showTopTips: true,
@@ -243,19 +259,17 @@ Page({
       return;
     }
     var user_id = that.data.userList[that.data.userIndex].id;
-    var begin_day = e.detail.value.begin_day; 
+    var begin_day = that.data.begin_day; 
     
-    var end_day = e.detail.value.end_day; 
-    var room_id = e.detail.value.room_id; 
-    var price = e.detail.value.price; 
+    var end_day = that.data.end_day; 
     var ext_content = e.detail.value.ext_content; 
     var cash_pledge_num = e.detail.value.cash_pledge_num; 
     var interval_time = e.detail.value.interval_time; 
     var water_num = e.detail.value.water_num; 
     var electricity_num = e.detail.value.electricity_num; 
     var gas_num = e.detail.value.gas_num; 
-    var describe = e.detail.value.describe; 
     var rent_num = e.detail.value.rent_num; 
+    var heating_fee = e.detail.value.heating_fee; 
     var title = e.detail.value.title; 
     var phone = e.detail.value.phone; 
     var wx = e.detail.value.wx; 
@@ -264,8 +278,6 @@ Page({
     var idcard = e.detail.value.idcard; 
     var idcard_img_0 = e.detail.value.idcard_img_0; 
     var idcard_img_1 = e.detail.value.idcard_img_1; 
-    var ext_img_0 = e.detail.value.ext_img_0; 
-    var ext_img_1 = e.detail.value.ext_img_1; 
     
     //------发布者真实信息------
     var realname = e.detail.value.realname;
@@ -283,9 +295,6 @@ Page({
           return ;
     }  
     if (!this.checkData(room_id, '请输入 room_id')) {
-          return ;
-    }  
-    if (!this.checkData(price, '请输入 price')) {
           return ;
     }  
     if (!this.checkData(ext_content, '请输入 ext_content')) {
@@ -306,10 +315,10 @@ Page({
     if (!this.checkData(gas_num, '请输入 gas_num')) {
           return ;
     }  
-    if (!this.checkData(describe, '请输入 describe')) {
+    if (!this.checkData(rent_num, '请输入 rent_num')) {
           return ;
     }  
-    if (!this.checkData(rent_num, '请输入 rent_num')) {
+    if (!this.checkData(heating_fee, '请输入 heating_fee')) {
           return ;
     }  
     if (!this.checkData(title, '请输入 title')) {
@@ -330,39 +339,27 @@ Page({
     if (!this.checkData(idcard, '请输入 idcard')) {
           return ;
     }  
-    if (!this.checkData(idcard_img_0, '请输入 idcard_img_0')) {
-          return ;
-    }  
-    if (!this.checkData(idcard_img_1, '请输入 idcard_img_1')) {
-          return ;
-    }  
-    if (!this.checkData(ext_img_0, '请输入 ext_img_0')) {
-          return ;
-    }  
-    if (!this.checkData(ext_img_1, '请输入 ext_img_1')) {
-          return ;
-    }  
-    if (realname != "" && !nameReg.test(realname)) {
-      this.setData({
-        showTopTips: true,
-        TopTips: '真实姓名一般为2-4位汉字'
-      });
-      return;
-    }
-    if (idcard == "") {
-      this.setData({
-        showTopTips: true,
-        TopTips: '请输入身份号'
-      });
-      return;
-    }
-    if (!phoneReg.test(phone)) {
-      this.setData({
-        showTopTips: true,
-        TopTips: '手机号格式不正确'
-      });
-      return;
-    }
+    // if (realname != "" && !nameReg.test(realname)) {
+    //   this.setData({
+    //     showTopTips: true,
+    //     TopTips: '真实姓名一般为2-4位汉字'
+    //   });
+    //   return;
+    // }
+    // if (idcard == "") {
+    //   this.setData({
+    //     showTopTips: true,
+    //     TopTips: '请输入身份号'
+    //   });
+    //   return;
+    // }
+    // if (!phoneReg.test(phone)) {
+    //   this.setData({
+    //     showTopTips: true,
+    //     TopTips: '手机号格式不正确'
+    //   });
+    //   return;
+    // }
     that.setData({
       isLoading: true,
       isdisabled: true
@@ -374,15 +371,12 @@ Page({
         begin_day: begin_day, 
         end_day: end_day, 
         room_id: room_id, 
-        price: price, 
         ext_content: ext_content, 
         cash_pledge_num: cash_pledge_num, 
         interval_time: interval_time, 
         water_num: water_num, 
         electricity_num: electricity_num, 
         gas_num: gas_num, 
-        status: status, 
-        describe: describe, 
         rent_num: rent_num, 
         title: title, 
         phone: phone, 
@@ -392,15 +386,25 @@ Page({
         idcard: idcard, 
         idcard_img_0: idcard_img_0, 
         idcard_img_1: idcard_img_1, 
-        ext_img_0: ext_img_0, 
-        ext_img_1: ext_img_1, 
+        heating_fee: heating_fee,
       },
       method: 'post',
       success: function (res) {
-        console.log(res)
-        that.setData({
-          isLoading: false,
-          loading: false,
+        if(res.data.data.error !=0) {
+          that.setData({
+            showTopTips: true,
+            TopTips: res.data.data.message,
+            isLoading: false,
+          });
+        } else {
+          that.setData({
+            showTopTips: true,
+            TopTips: '保存成功',
+            isLoading: false,
+          });
+        }
+        wx.navigateTo({
+          url: '/pages/index/index',
         })
       }
     })
@@ -412,7 +416,7 @@ Page({
   },
 
   checkData: function (param,  msg) {
-      if(!param) {
+      if(!param && param != 0) {
         this.setData({
           showTopTips: true,
           TopTips: msg

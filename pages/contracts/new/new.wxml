@@ -39,7 +39,7 @@
       </view>
       <view class="mod t-name">
         <text class="key">月租金:</text>
-        <input name="price" type="number" class="input" maxlength="100" placeholder='请输入月租金' value=""/>
+        <input name="rent_num" type="number" class="input" maxlength="100" placeholder='请输入月租金' value=""/>
       </view>
       <view class="mod t-name">
         <text class="key">押金:</text>
@@ -58,8 +58,12 @@
         <input name="gas_num" type="number" class="input" maxlength="100" placeholder='请输入燃气' value="0"/>
       </view>
       <view class="mod t-name">
+        <text class="key">燃气:</text>
+        <input name="heating_fee" type="number" class="input" maxlength="100" placeholder='暖气费' value="200"/>
+      </view>
+      <view class="mod t-name">
         <text class="key">缴费周期:</text>
-        <input name="interval_time" type="number" class="input" maxlength="100" placeholder='请输入缴费周期' value="0"/>
+        <input name="interval_time" type="number" class="input" maxlength="100" placeholder='请输入缴费周期' value="1"/>月
       </view>
       <!-- 有效时间 -->
       <view class="mod t-sign-time">
@@ -101,7 +105,7 @@
     <!-- 活动内容 -->
     <view class="mod-a mt20">
       <view class="mod-big my-nick">
-        <textarea name="content" class="weui-textarea" placeholder="请输入合同补充内容" value="{{content}}" style="height: 7em"
+        <textarea name="ext_content" class="weui-textarea" placeholder="请输入合同补充内容" value="{{content}}" style="height: 7em"
           bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
         <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
       </view>
@@ -125,7 +129,7 @@
       <view class="mod-a"></view>
       <view class="mod t-name">
         <text class="key">身份证号:</text>
-        <input name="contactValue" class="input" placeholder="请输入身份证号码" value="{{contactValue}}"/>
+        <input name="idcard" class="input" placeholder="请输入身份证号码" value="{{contactValue}}"/>
       </view>
       <view class="add_pic t-code" bindtap="uploadIdcardImg0" wx-if="{{!idcard_img_0}}">
         <view class='code'>身份证正面</view>
@@ -153,7 +157,7 @@
           <view class="weui-agree__text">
             <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{agreeButton}}" />
             <view class="weui-agree__checkbox-icon">
-              <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9"></icon>
+              <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9"  wx:if="{{agreeButton}}"></icon>
             </view>
             阅读并同意
             <view bindtap="showNotice" class="weui-agree__link">
@@ -162,7 +166,7 @@
         </label>
       </checkbox-group>
       <view class="submit-btn">
-        <button class='button' loading="{{isLoading}}" hover-start-time="200" formType="submit">提交</button>
+        <button class='button' loading="{{isLoading}}" disabled="{{isLoading}}" hover-start-time="200" formType="submit">提交</button>
       </view>
     </view>
   </form>
