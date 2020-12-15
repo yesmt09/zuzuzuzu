@@ -28,6 +28,8 @@ Page({
     userIndex: 0,
     userSelectShow:false,
     noteMaxLen: 200, //备注最多字数
+    types: ["运动", "游戏", "交友", "旅行", "读书", "竞赛", "电影", "音乐", "其他"],
+    typeIndex: "0",
   },
 
   tapNotice: function (e) {
@@ -45,7 +47,12 @@ Page({
       'notice_status': false
     });
   },
-
+ //改变活动类别
+ bindTypeChange: function (e) {
+  this.setData({
+    typeIndex: e.detail.value
+  })
+},
   //字数改变触发事件
   bindTextAreaChange: function (e) {
     var that = this
