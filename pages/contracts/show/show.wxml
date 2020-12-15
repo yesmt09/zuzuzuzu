@@ -1,3 +1,6 @@
+<view class="ysMoney">
+  <view class="share"><button open-type="share">转发租户</button></view>
+</view>
 <view class="fz">
   <view>
     <view>合同名称: <text>{{contract.title}}</text></view>

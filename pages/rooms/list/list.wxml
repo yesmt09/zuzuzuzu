@@ -2,7 +2,7 @@
 	<view class="house">
 		<navigator url="../contract/contractShow/contractShow" hover-class="none">
 
-			<text class="money">在租房屋</text> <text class="zz">{{roomsList['expire'].length + roomsList['ing'].length}}</text>
+			<text class="money">在租房屋</text> <text class="xz">{{roomsList['expire'].length + roomsList['ing'].length}}</text>
 		</navigator>
 		<navigator url="../contract/contractShow/contractShow" hover-class="none">
 

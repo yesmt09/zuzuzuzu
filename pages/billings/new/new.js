@@ -28,7 +28,7 @@ Page({
       },
       success: function (res) {
           that.setData({
-            billingInfo: res.data.data
+            billingInfo: res.data
           })
       }
     })

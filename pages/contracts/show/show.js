@@ -15,7 +15,13 @@ Page({
     showTopTips: false,
     TopTips: '',
   },
-  
+  onShareAppMessage: function (res) {
+    return {
+      title: this.data.contract.title,
+      path: '/pages/contracts/show/show?id=' + this.data.contract_id
+    }
+  },
+
   tapNotice: function (e) {
     if (e.target.id == 'notice') {
       this.hideNotice();
@@ -49,7 +55,7 @@ Page({
       },
       success: function (res) {
           that.setData({
-            contract: res.data.data
+            contract: res.data
           })
       }
     })

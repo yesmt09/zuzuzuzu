@@ -28,8 +28,6 @@ Page({
     userIndex: 0,
     userSelectShow:false,
     noteMaxLen: 200, //备注最多字数
-    types: ["运动", "游戏", "交友", "旅行", "读书", "竞赛", "电影", "音乐", "其他"],
-    typeIndex: "0",
   },
 
   tapNotice: function (e) {
@@ -102,7 +100,7 @@ Page({
         status: 1
       },
       success: function (res) {
-        if (res.data.data.length === 0) {
+        if (res.data.length === 0) {
           that.setData({
             showTopTips: true,
             TopTips: '无房间可出租',
@@ -110,7 +108,7 @@ Page({
           });
         } else {
           that.setData({
-            roomList: res.data.data
+            roomList: res.data
           })
         }
       }
@@ -122,7 +120,7 @@ Page({
       data: [],
       success: function (res) {
         that.setData({
-          userList: res.data.data
+          userList: res.data
         })
       }
     })
@@ -397,10 +395,10 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        if(res.data.data.error !=0) {
+        if(res.data.error !=0) {
           that.setData({
             showTopTips: true,
-            TopTips: res.data.data.message,
+            TopTips: res.data.message,
             isLoading: false,
           });
         } else {

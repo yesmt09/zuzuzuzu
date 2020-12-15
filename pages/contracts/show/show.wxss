@@ -1,5 +1,24 @@
 @import '/static/style/weui.wxss';
 @import '/static/style/zanui.wxss';
+.ysMoney{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+  background:   #f2f2f2;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 10rpx;
+}
+.share {
+
+  height: 58rpx;
+  line-height: 58rpx;
+  border-radius: 10rpx;
+  background:#ff656f ;
+  color: #fff;
+  padding: 0 10rpx;
+}
 .fz{
   display: flex;
   align-items: center;

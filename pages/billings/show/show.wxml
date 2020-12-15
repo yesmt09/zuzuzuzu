@@ -6,48 +6,48 @@
   <text class="zdtitle">账单明细</text>
   <view class="mx">
     <view class="mxList">
-      <text>描述</text>
-      <view>11111</view>
+      <text>账单标题</text>
+      <view>{{billingInfo.title}}</view>
     </view>
     <view class="mxList">
       <text>实收</text>
-      <view>0</view>
+      <view>{{billingInfo.payment_num}}</view>
     </view>
     <view class="mxList">
       <text>状态</text>
-      <view>0</view>
+      <view>{{billingInfo.status}}</view>
     </view>
     <view class="mxList">
       <text>收租日</text>
-      <view>0</view>
+      <view>{{billingInfo.created_at}}</view>
     </view>
     <view class="mxList">
       <text>缴费周期</text>
-      <view>0</view>
-    </view>
-    <view class="mxList">
-      <text>备注</text>
-      <view>0</view>
-    </view>
-    <view class="mxList">
-      <text>承租人</text>
-      <view>0</view>
-    </view>
-    <view class="mxList">
-      <text>电话</text>
-      <view>0</view>
-    </view>
-    <view class="mxList">
-      <text>微信号</text>
-      <view>0</view>
+      <view>{{billingInfo.contracts.interval_time}}</view>
     </view>
     <view class="mxList">
       <text>合同备注</text>
-      <view>0</view>
+      <view>{{billingInfo.contracts.ext_content}}</view>
+    </view>
+    <view class="mxList">
+      <text>承租人</text>
+      <view>{{billingInfo.contracts.user_id}}</view>
+    </view>
+    <view class="mxList">
+      <text>电话</text>
+      <view>{{billingInfo.contracts.phone}}</view>
+    </view>
+    <view class="mxList">
+      <text>微信号</text>
+      <view>{{billingInfo.contracts.wx}}</view>
+    </view>
+    <view class="mxList">
+      <text>合同备注</text>
+      <view>{{billingInfo.contracts.ext_content}}</view>
     </view>
   </view>
 </view>
-<view class="shoukuanBottom">
+<view class="shoukuanBottom" wx:if="app.globalData.is_admin">
   <view class="delete" bindtap="delete">
     <text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
     <text>删除</text>

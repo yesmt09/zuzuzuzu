@@ -8,7 +8,7 @@ Page({
    */
   data: {
       billing_id: 0,
-      billingInfo: {}
+      billingInfo: {},
   },
 
   /**
@@ -28,7 +28,7 @@ Page({
       },
       success: function (res) {
           that.setData({
-            billingInfo: res.data.data
+            billingInfo: res.data
           })
       }
     })

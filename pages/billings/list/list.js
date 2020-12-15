@@ -39,13 +39,13 @@ Page({
             wait: [],
             cancel: []
           }
-          for (let i = 0; i < res.data.data.length; i++) {
-            if(res.data.data[i]['status'] === "4") {
-              billingsList['realdy'].push(res.data.data[i])
-            } else if (res.data.data[i]['status'] === "2") {
-              billingsList['cancel'].push(res.data.data[i])
+          for (let i = 0; i < res.data.length; i++) {
+            if(res.data[i]['status'] === "4") {
+              billingsList['realdy'].push(res.data[i])
+            } else if (res.data[i]['status'] === "2") {
+              billingsList['cancel'].push(res.data[i])
             } else {
-              billingsList['wait'].push(res.data.data[i])
+              billingsList['wait'].push(res.data[i])
             }
           }
           that.setData({

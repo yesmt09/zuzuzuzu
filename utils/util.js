@@ -62,7 +62,7 @@ function request({
     method: method,
     timeout: 0,
     success: (result) => {
-      success(result)
+      success(result.data)
     },
     fail: (result) => {
       wx.setStorageSync('cookie', result.header['Set-Cookie']);

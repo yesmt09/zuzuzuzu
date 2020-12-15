@@ -33,19 +33,19 @@ Page({
             expire: [],
             ing: []
           }
-          for (let i = 0; i < res.data.data.length; i++) {
-            if(res.data.data[i]['status'] === "4") {
-              if (res.data.data[i]['contract']['end_day'] === "2020") {
-                roomsList['ing'].push(res.data.data[i])
+          for (let i = 0; i < res.data.length; i++) {
+            if(res.data[i]['status'] === "4") {
+              if (res.data[i]['contract']['end_day'] === "2020") {
+                roomsList['ing'].push(res.data[i])
               } else {
-                roomsList['expire'].push(res.data.data[i])
+                roomsList['expire'].push(res.data[i])
               }
             } else {
-              roomsList['free'].push(res.data.data[i])
+              roomsList['free'].push(res.data[i])
             }
           }
           that.setData({
-            roomsData: res.data.data,
+            roomsData: res.data,
             roomsList: roomsList,
           })
         }

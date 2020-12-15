@@ -22,8 +22,8 @@
       </view>
       <view class="mod t-sign-time">
         <text class="key">用户列表</text>
-        <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}">
-          <view class="value" name="types">{{types[typeIndex]}}
+        <picker bindchange="bindTypeChange" value="{{userIndex}}" range="{{types}}">
+          <view class="value" name="types">{{userList[userIndex]}}
           </view>
         </picker>
       </view>
