@@ -142,8 +142,7 @@ font-size:14px;
 
 .mod-a{
   padding: 0 20rpx;
-  border: 1px solid #f0f0f0;
-  background-color: #fff;
+  font-size: 28rpx;
 }
 
 .mod{
@@ -184,7 +183,7 @@ font-size:14px;
 }
 
 .value{
-  color: #b2b2b2;
+  color: #3e3d3d;
 }
 .t-sign-time .value{
   display: flex;
@@ -198,15 +197,8 @@ font-size:14px;
   text-align: right;
   width: 510rpx;
   overflow: hidden;
-  color: #b2b2b2;
+  color: #3e3d3d;
   height: 44rpx;
-}
-
-.t-address, .t-sign-time, .t-time{
-  border-bottom: 1px solid #f0f0f0;
-}
-.t-code{
- border-top: 1px solid #f0f0f0;
 }
 
 .t-time{
