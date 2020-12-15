@@ -7,6 +7,7 @@ App({
   globalData: {
     openid: "",
     userid: "",
+    is_admin: false,
     userInfo: {},
     BaseURL: "http://192.168.2.178:8087",
   },
@@ -79,9 +80,10 @@ App({
               },
               method: 'post',
               success: function (res) {
-                if (res.data.error === 0) {
-                  getApp().globalData.userid = res.data.data.openid
-                  wx.setStorageSync('userid', res.data.data.openid); //存储openid
+                if (res.error === 0) {
+                  getApp().globalData.is_admin = res.is_admin
+                  getApp().globalData.userid = res.data.openid
+                  wx.setStorageSync('userid', res.data.openid); //存储openid
                   resolve(res);
                 } else {
                   wx.showModal({ // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示

@@ -14,9 +14,14 @@ Page({
     contract: {},
     showTopTips: false,
     TopTips: '',
-    noteMaxLen: 200,//备注最多字数
   },
-  
+  onShareAppMessage: function (res) {
+    return {
+      title: this.data.contract.title,
+      path: '/pages/contracts/show/show?id=' + this.data.contract_id
+    }
+  },
+
   tapNotice: function (e) {
     if (e.target.id == 'notice') {
       this.hideNotice();
@@ -50,7 +55,7 @@ Page({
       },
       success: function (res) {
           that.setData({
-            contract: res.data.data
+            contract: res.data
           })
       }
     })

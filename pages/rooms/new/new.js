@@ -28,7 +28,7 @@ Page({
       },
       success: function (res) {
           that.setData({
-            dataInfo: res.data.data
+            dataInfo: res.data
           })
       }
     })

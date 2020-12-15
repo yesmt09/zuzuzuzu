@@ -2,14 +2,14 @@
 	<view class="house">
 		<navigator url="../contract/contractShow/contractShow" hover-class="none">
 
-			<text class="money">在租房屋</text> <text class="zz">{{roomsList['expire'].length + roomsList['ing'].length}}</text>
+			<text class="money">在租房屋</text> <text class="xz">{{roomsList['expire'].length + roomsList['ing'].length}}</text>
 		</navigator>
 		<navigator url="../contract/contractShow/contractShow" hover-class="none">
 
 			<text class="money">闲置房屋</text> <text class="xz">{{roomsList['free'].length}}</text>
 		</navigator>
 	</view>
-	<navigator class="addhouse"><text>+</text>添加房源</navigator>
+	<navigator class="addhouse" url="/pages/rooms/new/new"><text>+</text>添加房源</navigator>
 <view class="choose">筛选：<input type="text" placeholder="请输入房间号"></input></view>
 <view class="house-show" wx:for="{{roomsData}}" wx:key="{{item.id}}" bindtap="gotoShow" data-id="{{item.id}}">
 	<text class="title">{{item.number}}</text>

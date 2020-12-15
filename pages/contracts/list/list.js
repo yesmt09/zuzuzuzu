@@ -18,7 +18,7 @@ Page({
       cancel: []
     },
     currtab: 0,
-    swipertab: [{ name: '已完成', index: 0 }, { name: '待付款', index: 1 }, { name: '已取消', index: 2 }],
+    swipertab: [{ name: '未签订', index: 0 }, { name: '已签订', index: 1 }, { name: '已过期', index: 2 }],
   },
 
   onShow: function () {
@@ -40,13 +40,13 @@ Page({
             wait: [],
             cancel: []
           }
-          for (let i = 0; i < res.data.data.length; i++) {
-            if(res.data.data[i]['status'] === "4") {
-              contractsList['realdy'].push(res.data.data[i])
-            } else if (res.data.data[i]['status'] === "2") {
-              contractsList['cancel'].push(res.data.data[i])
-            } else {
-              contractsList['wait'].push(res.data.data[i])
+          for (let i = 0; i < res.data.length; i++) {
+            if(res.data[i]['status'] === "4") {
+              contractsList['realdy'].push(res.data[i])
+            } else if (res.data[i]['status'] === "2") {
+              contractsList['cancel'].push(res.data[i])
+            } else if (res.data[i]['status'] === "3"){
+              contractsList['wait'].push(res.data[i])
             }
           }
           that.setData({
