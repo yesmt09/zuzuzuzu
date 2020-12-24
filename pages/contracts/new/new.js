@@ -23,10 +23,8 @@ Page({
     noteNowLen: 0, //备注当前字数
     roomList: [],
     userList: [],
-    selectShow: false, //控制下拉列表的显示隐藏，false隐藏、true显示
-    selectIndex: 0, //选择的下拉列表下标
+    roomIndex: 0, //选择的下拉列表下标
     userIndex: 0,
-    userSelectShow:false,
     noteMaxLen: 200, //备注最多字数
   },
 
@@ -45,12 +43,6 @@ Page({
       'notice_status': false
     });
   },
- //改变活动类别
- bindTypeChange: function (e) {
-  this.setData({
-    typeIndex: e.detail.value
-  })
-},
   //字数改变触发事件
   bindTextAreaChange: function (e) {
     var that = this
@@ -135,35 +127,16 @@ Page({
       end_day: e.detail.value
     })
   },
-
-  // 点击下拉显示框
-  selectTap() {
+  bindUserChange: function (e) {
     this.setData({
-      selectShow: !this.data.selectShow
-    });
+      userIndex: that.data.userList[e.detail.value].id
+    })
   },
-  // 点击下拉列表
-  optionTap(e) {
-    let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
+  bindRoomChange: function (e) {
     this.setData({
-      selectIndex: index,
-      selectShow: !this.data.selectShow
-    });
+      roomIndex: that.data.roomList[e.detail.value].id
+    })
   },
-  selectNickNameTap() {
-    this.setData({
-      userSelectShow: !this.data.userSelectShow
-    });
-  },
-  // 点击下拉列表
-  optionNickNameTap(e) {
-    let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
-    this.setData({
-      userIndex: index,
-      userSelectShow: !this.data.userSelectShow
-    });
-  },
-
   //上传活动图片
   uploadPic: function () { //选择图标
     wx.chooseImage({
@@ -255,15 +228,15 @@ Page({
       });
       return;
     }
-    var room_id = that.data.roomList[that.data.selectIndex].id;
-    if (room_id == "") {
+    var room_id = that.data.roomIndex;
+    if (that.data.roomList.length === 0) {
       this.setData({
         showTopTips: true,
         TopTips: '请选择房间'
       });
       return;
     }
-    var user_id = that.data.userList[that.data.userIndex].id;
+    var user_id = that.data.userIndex
     var begin_day = that.data.begin_day; 
     
     var end_day = that.data.end_day; 
@@ -395,10 +368,10 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        if(res.data.error !=0) {
+        if(res.error !=0) {
           that.setData({
             showTopTips: true,
-            TopTips: res.data.message,
+            TopTips: res.message,
             isLoading: false,
           });
         } else {

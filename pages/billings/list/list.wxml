@@ -25,7 +25,7 @@
         </view>
         <view class="productCount">
           <view>
-            合计：<text class="money">￥{{item.payment_num}}</text>
+            合计：<text class="money">￥{{item.rent_num}}</text>
           </view>
         </view>
       </view>

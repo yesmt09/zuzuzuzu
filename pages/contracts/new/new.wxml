@@ -1,43 +1,23 @@
-<view class="fz">
-  <view>
-    <view>新签订租房合同</view>
-  </view>
-</view>
 
 <view class="add-page">
   <form bindsubmit="submitForm">
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
     <view class="mod-a">
-      <view class="mod t-name">
-        <text class="key">房间号:</text>
-        <view class='select_box'>
-          <view class='select' catchtap='selectTap'>
-            <text>{{roomList[selectIndex].number}}</text>
-          </view>
-          <view class='option_box' style='height:{{selectShow?(roomList.length>5?325:roomList.length*50):0}}rpx;'>
-            <text class='option' wx:for='{{roomList}}' wx:key='this' data-index='{{selectIndex}}'
-              catchtap='optionTap'>{{item.number}}</text>
-          </view>
-        </view>
-      </view>
       <view class="mod t-sign-time">
-        <text class="key">用户列表</text>
-        <picker bindchange="bindTypeChange" value="{{userIndex}}" range="{{types}}">
-          <view class="value" name="types">{{userList[userIndex]}}
+        <text class="key">房间号:</text>
+        <picker bindchange="bindRoomChange" value="{{roomIndex}}" range="{{roomList}}" range-key="{{'number'}}">
+          <view class="value" name="room_id">{{roomList[roomIndex].number}}
+            <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
           </view>
         </picker>
       </view>
-      <view class="mod t-name">
+      <view class="mod t-sign-time">
         <text class="key">用户列表:</text>
-        <view class='select_box'>
-          <view class='select' catchtap='selectNickNameTap'>
-            <text>{{userList[userIndex].nickname}}</text>
+        <picker bindchange="bindUserChange" value="{{userIndex}}" range="{{userList}}" range-key="{{'nickname'}}">
+          <view class="value" name="user_id">{{userList[userIndex].nickname}}
+            <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
           </view>
-          <view class='option_box' style='height:{{userSelectShow?(userList.length>5?325:userList.length*50):0}}rpx;'>
-            <text class='option' wx:for='{{userList}}' wx:key='this' data-index='{{userIndex}}'
-              catchtap='optionNickNameTap'>{{item.nickname}}</text>
-          </view>
-        </view>
+        </picker>
       </view>
       <view class="mod t-name">
         <text class="key">合同名称:</text>
@@ -46,11 +26,11 @@
       </view>
       <view class="mod t-name">
         <text class="key">月租金:</text>
-        <input name="rent_num" type="number" class="input" maxlength="100" placeholder='请输入月租金' value=""/>
+        <input name="rent_num" type="number" class="input" maxlength="100" placeholder='请输入月租金' value="600"/>
       </view>
       <view class="mod t-name">
         <text class="key">押金:</text>
-        <input name="cash_pledge_num" type="number" class="input" maxlength="100" placeholder='请输入押金' value=""/>
+        <input name="cash_pledge_num" type="number" class="input" maxlength="100" placeholder='请输入押金' value="600"/>
       </view>
       <view class="mod t-name">
         <text class="key">水费:</text>

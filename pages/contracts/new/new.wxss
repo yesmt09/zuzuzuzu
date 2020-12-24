@@ -57,7 +57,7 @@ font-size:14px;
   text-align: center;
   font-size: 16px;
   border: 0 none;
-  background: #118fff;
+  background: #ffb822;
   color: #fff;
   margin: 30rpx auto;
   border-radius: 50px;
@@ -137,7 +137,7 @@ font-size:14px;
   flex-direction: column;
   font-size: 32rpx;
   color: #333;
-  padding: 30rpx 0;
+  padding-bottom: 30rpx;
 }
 
 .mod-a{

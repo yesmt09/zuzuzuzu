@@ -9,6 +9,7 @@ Page({
   data: {
       billing_id: 0,
       billingInfo: {},
+      showButton: false,
   },
 
   /**
@@ -57,7 +58,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      showButton: app.globalData.is_admin
+    })
   },
 
   /**
