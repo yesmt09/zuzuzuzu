@@ -129,12 +129,14 @@ Page({
   },
   bindUserChange: function (e) {
     this.setData({
-      userIndex: that.data.userList[e.detail.value].id
+      userIndex: Number(e.detail.value)
     })
   },
   bindRoomChange: function (e) {
+    console.log(e)
+    console.log(that.data.roomList)
     this.setData({
-      roomIndex: that.data.roomList[e.detail.value].id
+      roomIndex: Number(e.detail.value)
     })
   },
   //上传活动图片
@@ -228,7 +230,7 @@ Page({
       });
       return;
     }
-    var room_id = that.data.roomIndex;
+    var room_id = that.data.roomList[that.data.roomIndex].id
     if (that.data.roomList.length === 0) {
       this.setData({
         showTopTips: true,
@@ -236,7 +238,7 @@ Page({
       });
       return;
     }
-    var user_id = that.data.userIndex
+    var user_id = that.data.userList[that.data.userIndex].id
     var begin_day = that.data.begin_day; 
     
     var end_day = that.data.end_day; 
@@ -250,7 +252,7 @@ Page({
     var heating_fee = e.detail.value.heating_fee; 
     var title = e.detail.value.title; 
     var phone = e.detail.value.phone; 
-    var wx = e.detail.value.wx; 
+    var weixin = e.detail.value.wx; 
     var peoplenum = e.detail.value.peoplenum; 
     var realname = e.detail.value.realname; 
     var idcard = e.detail.value.idcard; 
@@ -305,7 +307,7 @@ Page({
     if (!this.checkData(phone, '请输入 phone')) {
           return ;
     }  
-    if (!this.checkData(wx, '请输入 wx')) {
+    if (!this.checkData(weixin, '请输入 weixin')) {
           return ;
     }  
     if (!this.checkData(peoplenum, '请输入 peoplenum')) {
@@ -358,7 +360,7 @@ Page({
         rent_num: rent_num, 
         title: title, 
         phone: phone, 
-        wx: wx, 
+        wx: weixin, 
         peoplenum: peoplenum, 
         realname: realname, 
         idcard: idcard, 
@@ -367,7 +369,7 @@ Page({
         heating_fee: heating_fee,
       },
       method: 'post',
-      success: function (res) {
+      success: (res) => {
         if(res.error !=0) {
           that.setData({
             showTopTips: true,
@@ -381,9 +383,11 @@ Page({
             isLoading: false,
           });
         }
-        wx.navigateTo({
-          url: '/pages/index/index',
-        })
+        setTimeout(function () {
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        }, 1000);
       }
     })
     setTimeout(function () {
