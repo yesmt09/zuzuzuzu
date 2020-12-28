@@ -1,5 +1,5 @@
 <view class="ysMoney">
-  <view><text>{{billingInfo.contracts.title}}</text>应收：<text class="red">{{billingInfo.rent_num + billingInfo.heating_fee}}</text>元</view>
+  <view>本次应收：<text class="red">{{billingInfo.payment_num}}</text>元</view>
   <view class="share">转发租户</view>
 </view>
 <view>
@@ -10,12 +10,16 @@
       <view>{{billingInfo.title}}</view>
     </view>
     <view class="mxList">
+      <text>房间号</text>
+      <view>{{billingInfo.room.number}}</view>
+    </view>
+    <view class="mxList">
       <text>实收</text>
       <view>{{billingInfo.payment_num}}</view>
     </view>
     <view class="mxList">
       <text>状态</text>
-      <view>{{billingInfo.status}}</view>
+      <view>{{billingInfo.status==1?'待付款':'已付款'}}</view>
     </view>
     <view class="mxList">
       <text>收租日</text>
@@ -23,7 +27,7 @@
     </view>
     <view class="mxList">
       <text>缴费周期</text>
-      <view>{{billingInfo.contracts_interval_time}}</view>
+      <view>{{billingInfo.contracts_interval_time}} 月</view>
     </view>
     <view class="mxList">
       <text>账单备注</text>
@@ -31,7 +35,7 @@
     </view>
     <view class="mxList">
       <text>承租人</text>
-      <view>{{billingInfo.contracts_user_id}}</view>
+      <view>{{billingInfo.user.nickname}}</view>
     </view>
     <view class="mxList">
       <text>电话</text>
@@ -58,3 +62,10 @@
   </view>
   <button class="confirm" bindtap="confirm" wx:if="{{billingInfo.status !== '4'}}">确认收款</button>
 </view>
+
+<wxs module="fn">
+      module.exports = {
+        parseInt: function(num){
+            return parseInt(num)
+          }
+      }

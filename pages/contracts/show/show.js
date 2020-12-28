@@ -65,11 +65,11 @@ Page({
     var that = this
     wx.showModal({
       title: '提示',
-      content: '确定已收款吗?',
+      content: '确定签署改合同吗?',
       success: function (sm) {
         if (sm.confirm) {
           request({
-            url: app.globalData.BaseURL + '/billings/confirm',
+            url: app.globalData.BaseURL + '/contracts/confirm',
             data: {
               id: that.data.billing_id
             },
@@ -81,7 +81,7 @@ Page({
                  mask:true,
                  complete: () => {
                     wx.redirectTo({
-                      url: '/pages/billings/list/list',
+                      url: '/pages/contracts/list/list',
                     })
                  }
                })
@@ -95,11 +95,11 @@ Page({
     var that = this
     wx.showModal({
       title: '提示',
-      content: '确定取消该笔账单吗?',
+      content: '确定取消该笔合同吗?',
       success: function (sm) {
         if (sm.confirm) {
           request({
-            url: app.globalData.BaseURL + '/billings/cancel',
+            url: app.globalData.BaseURL + '/contracts/cancel',
             data: {
               id: that.data.billing_id
             },
@@ -111,7 +111,7 @@ Page({
                  mask:true,
                  complete: () => {
                     wx.redirectTo({
-                      url: '/pages/billings/list/list',
+                      url: '/pages/contracts/list/list',
                     })
                  }
                })

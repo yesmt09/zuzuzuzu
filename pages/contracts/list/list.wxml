@@ -3,9 +3,6 @@
     <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
   </block>
 </view>
-<swiper class="swiper-box" duration="300" style="height:{{deviceH-31}}px">
-  <!-- 完成 -->
-  <swiper-item>
     <scroll-view class="hot-box" scroll-y="true">
       <view  class="orderDetails" wx:for="{{contracts}}" wx:key="id" bindtap="gotoShow" data-id="{{item.id}}">
         <view class="orderListTitle">
@@ -30,5 +27,3 @@
         </view>
       </view>
     </scroll-view>
-  </swiper-item>
-</swiper>
