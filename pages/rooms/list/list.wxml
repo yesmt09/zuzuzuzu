@@ -15,16 +15,12 @@
 	<text class="title">{{item.number}}</text>
 	<view class="tb-toppest">
 		<navigator url="#" hover-class="none">
-			<view><text class="num">{{item.billings.payment_num?item.billings.payment_num:0}}</text>元</view>
+			<view><text class="num">{{item.billings[1].payment_num?item.billings[1].payment_num:0}}</text>元</view>
 			<text class="money">上月收入</text>
 		</navigator>
 		<navigator url="#" hover-class="none">
-			<view><text class="num">{{item.billings.payment_num?item.billings.payment_num:0}}</text>元</view>
+			<view><text class="num">{{item.billings[0].payment_num?item.billings[0].payment_num:0}}</text>元</view>
 			<text  class="money">本月应收</text>
-		</navigator>
-		<navigator url="#" hover-class="none">
-			<view><text class="num">{{item.billings.payment_num?item.billings.payment_num:0}}</text>度</view>
-			<text class="money">上月电费</text>
 		</navigator>
 	</view>
 </view>
