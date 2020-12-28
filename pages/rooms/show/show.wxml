@@ -6,11 +6,11 @@
 </view>
 <view class="beizhu">
   <text>承租人:</text>
-  <view>{{dataInfo.describe}}</view>
+  <view>{{dataInfo.user.nickname}}</view>
 </view>
 <view class="beizhu">
   <text>备注：</text>
-  <textarea>{{dataInfo.describe}}</textarea>
+  <textarea>{{dataInfo.contract.ext_content}}</textarea>
 </view>
 <view class="flexItem rowStyle marginBottom10 cellStyle ">
   <label class="fontSize14">开票日期 </label>
