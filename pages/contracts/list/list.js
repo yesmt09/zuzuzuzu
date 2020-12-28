@@ -17,8 +17,8 @@ Page({
       wait: [],
       cancel: []
     },
-    currtab: 0,
-    swipertab: [{ name: '未签订', index: 0 }, { name: '已签订', index: 1 }, { name: '已过期', index: 2 }],
+    currtab: 1,
+    swipertab: [{ name: '已签订', index: 1 }, { name: '未签订', index: 0 }, { name: '已过期', index: 2 }],
   },
 
   onShow: function () {

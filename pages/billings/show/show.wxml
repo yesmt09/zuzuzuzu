@@ -48,17 +48,13 @@
   </view>
 </view>
 <view class="shoukuanBottom" isc wx:if="{{showButton}}">
-  <view class="delete" bindtap="delete">
+  <view class="delete" bindtap="cancel" wx:if="{{billingInfo.status !== '2'}}">
     <text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
-    <text>删除</text>
+    <text>取消账单</text>
   </view>
-  <view class="rushRent">
+  <view class="rushRent" wx:if="{{billingInfo.status === '1'}}">
     <text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
-    <text>催租</text>
+    <text>催收</text>
   </view>
-  <view class="renewal">
-    <text class="iconfont icon-qianbao iconOrder iconBox" style="display:flex; margin:0 auto"></text>
-    <text>续租</text>
-  </view>
-  <button class="confirm ">确认收款</button>
+  <button class="confirm" bindtap="confirm" wx:if="{{billingInfo.status !== '4'}}">确认收款</button>
 </view>

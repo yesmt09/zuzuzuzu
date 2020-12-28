@@ -1,5 +1,5 @@
 <view class="ysMoney">
-  <view class="share"><button open-type="share">转发租户</button></view>
+  <view class="share"><button class="mini-btn" type="default" size="mini" open-type="share">转发租户</button></view>
 </view>
 <view class="fz">
   <view>
@@ -105,4 +105,8 @@
       </view>
     </view>
   </form>
+</view>
+<view class="shoukuanBottom" isc wx:if="{{showButton}}">
+  <button class="confirm" bindtap="cancel" wx:if="{{contract.status !== '2'}}">取消合同</button>
+  <button class="confirm" bindtap="confirm" wx:if="{{contract.status !== '4'}}">续租</button>
 </view>

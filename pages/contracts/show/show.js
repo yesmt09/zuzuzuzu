@@ -14,6 +14,7 @@ Page({
     contract: {},
     showTopTips: false,
     TopTips: '',
+    showButton: false,
   },
   onShareAppMessage: function (res) {
     return {
@@ -60,7 +61,66 @@ Page({
       }
     })
   },
-
+  confirm: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定已收款吗?',
+      success: function (sm) {
+        if (sm.confirm) {
+          request({
+            url: app.globalData.BaseURL + '/billings/confirm',
+            data: {
+              id: that.data.billing_id
+            },
+            method: 'post',
+            success: (res) => {
+               wx.showToast({
+                 title: res.message,
+                 icon: res.error === 1 ?'error':'success',
+                 mask:true,
+                 complete: () => {
+                    wx.redirectTo({
+                      url: '/pages/billings/list/list',
+                    })
+                 }
+               })
+            } 
+          })
+        }
+      }
+    })
+  },
+  cancel: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定取消该笔账单吗?',
+      success: function (sm) {
+        if (sm.confirm) {
+          request({
+            url: app.globalData.BaseURL + '/billings/cancel',
+            data: {
+              id: that.data.billing_id
+            },
+            method: 'post',
+            success: (res) => {
+               wx.showToast({
+                 title: res.message,
+                 icon: res.error === 1 ?'error':'success',
+                 mask:true,
+                 complete: () => {
+                    wx.redirectTo({
+                      url: '/pages/billings/list/list',
+                    })
+                 }
+               })
+            } 
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -72,7 +132,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      showButton: app.globalData.is_admin
+    })
   },
 
   /**

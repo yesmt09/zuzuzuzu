@@ -69,18 +69,6 @@ padding-right:15px;
 color:#999;
 font-size:14px;
 }
-.button {
-  width: 400rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  text-align: center;
-  font-size: 16px;
-  border: 0 none;
-  background: #118fff;
-  color: #fff;
-  margin: 30rpx auto;
-  border-radius: 50px;
-}
 
 .add_pic {
   padding: 0 40rpx;
@@ -376,4 +364,23 @@ overflow:hidden;
 }
 .notice-a text{
   word-break: break-all;
+}
+.shoukuanBottom {
+  position: fixed;
+  bottom:0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.delete,.rushRent,.renewal{
+  width: 20%;
+  text-align: center;
+  font-size: 28rpx;
+}
+.confirm {
+  background: #ff656f;
+  color: #fff;
+  width: 40%;
+  border-radius: 0;
 }

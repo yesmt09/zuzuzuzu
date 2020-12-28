@@ -41,15 +41,62 @@ Page({
   onReady: function () {
 
   },
-  delete: function () {
+  confirm: function () {
+    var that = this
     wx.showModal({
       title: '提示',
-      content: '确定删除该项吗',
+      content: '确定已收款吗?',
       success: function (sm) {
         if (sm.confirm) {
-          console.log("用户点击确定")
-        } else if (sm.cancel) {
-          console.log('用户点击取消')
+          request({
+            url: app.globalData.BaseURL + '/billings/confirm',
+            data: {
+              id: that.data.billing_id
+            },
+            method: 'post',
+            success: (res) => {
+               wx.showToast({
+                 title: res.message,
+                 icon: res.error === 1 ?'error':'success',
+                 mask:true,
+                 complete: () => {
+                    wx.redirectTo({
+                      url: '/pages/billings/list/list',
+                    })
+                 }
+               })
+            } 
+          })
+        }
+      }
+    })
+  },
+  cancel: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定取消该笔账单吗?',
+      success: function (sm) {
+        if (sm.confirm) {
+          request({
+            url: app.globalData.BaseURL + '/billings/cancel',
+            data: {
+              id: that.data.billing_id
+            },
+            method: 'post',
+            success: (res) => {
+               wx.showToast({
+                 title: res.message,
+                 icon: res.error === 1 ?'error':'success',
+                 mask:true,
+                 complete: () => {
+                    wx.redirectTo({
+                      url: '/pages/billings/list/list',
+                    })
+                 }
+               })
+            } 
+          })
         }
       }
     })
