@@ -1,5 +1,5 @@
 const {
-  request
+  request, getNowFormatDate, compareDate, getPreMonth
 } = require("../../../utils/util")
 
 const app = getApp();
@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rooms: [],
+    roomAll: [],
     roomsList: {
       free:[],
       expire: [],
@@ -35,23 +35,63 @@ Page({
           }
           for (let i = 0; i < res.data.length; i++) {
             if(res.data[i]['status'] === "4") {
-              if (res.data[i]['contract']['end_day'] === "2020") {
-                roomsList['ing'].push(res.data[i])
-              } else {
+              let nowData = getPreMonth(getNowFormatDate());
+              if (compareDate(res.data[i]['contract']['end_day'], nowData)) {
                 roomsList['expire'].push(res.data[i])
+              } else {
+                roomsList['ing'].push(res.data[i])
               }
             } else {
               roomsList['free'].push(res.data[i])
             }
           }
           that.setData({
+            roomAll: res.data,
             roomsData: res.data,
             roomsList: roomsList,
           })
         }
     })
   },
+  
+  selectIng: function (e) {
+    this.setData({
+      roomsData: this.data.roomsList['expire'] + this.data.roomsList['ing']
+    })
+  },
 
+  selectFree: function (e) {
+    this.setData({
+      roomsData: this.data.roomsList['free']
+    })
+  },
+
+  findRoom: function (e) {
+    var roomId = this.validateNumber(e.detail.value)
+    var roomAll = this.data.roomAll
+    if (roomId === ''){
+      this.setData({
+        roomsData: roomAll
+      })
+      return 
+    }
+    this.setData({
+      roomsData: []
+    })
+    console.log(this.validateNumber(roomId))
+    for (let i = 0; i<roomAll.length;i++) {
+      console.log(roomAll[i].number)
+        if (roomAll[i].number == roomId) {
+          this.setData({
+            roomsData: [roomAll[i]]
+          })
+          return;
+        }
+    }
+  },
+  validateNumber: function(val) {
+    return val.replace(/\D/g, '')
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,6 +1,6 @@
 <view class="ysMoney">
   <view>本次应收：<text class="red">{{billingInfo.payment_num}}</text>元</view>
-  <view class="share">转发租户</view>
+  <view wx:if="{{showButton}}" class="share">转发租户</view>
 </view>
 <view>
   <text class="zdtitle">账单明细</text>
@@ -24,6 +24,10 @@
     <view class="mxList">
       <text>收租日</text>
       <view>{{billingInfo.created_at}}</view>
+    </view>
+    <view class="mxList">
+      <text>租期日期</text>
+      <view>{{billingInfo.begin_day}} 至 {{billingInfo.end_day}}</view>
     </view>
     <view class="mxList">
       <text>缴费周期</text>

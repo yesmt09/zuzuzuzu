@@ -1,25 +1,26 @@
 <view class="house-wrap"></view>
 	<view class="house">
-		<navigator url="../contract/contractShow/contractShow" hover-class="none">
-
-			<text class="money">在租房屋</text> <text class="xz">{{roomsList['expire'].length + roomsList['ing'].length}}</text>
-		</navigator>
-		<navigator url="../contract/contractShow/contractShow" hover-class="none">
-
+		<view hover-class="none" bindtap="selectIng">
+			<text class="money">即将过期</text> <text class="xz">{{roomsList['expire'].length}}</text>
+		</view>
+		<view hover-class="none" bindtap="selectIng">
+			<text class="money">在租房屋</text> <text class="xz">{{roomsList['expire'].length+roomsList['ing'].length}}</text>
+		</view>
+		<view hover-class="none" bindtap="selectFree">
 			<text class="money">闲置房屋</text> <text class="xz">{{roomsList['free'].length}}</text>
-		</navigator>
+		</view>
 	</view>
 	<navigator class="addhouse" url="/pages/rooms/new/new"><text>+</text>添加房源</navigator>
-<view class="choose">筛选：<input type="text" placeholder="请输入房间号"></input></view>
+<view class="choose">筛选：<input type="text" bindinput="findRoom" placeholder="请输入房间号"></input></view>
 <view class="house-show" wx:for="{{roomsData}}" wx:key="{{item.id}}" bindtap="gotoShow" data-id="{{item.id}}">
-	<text class="title">{{item.number}}</text>
+	<text class="title">房号: {{item.number}}</text>
 	<view class="tb-toppest">
 		<navigator url="#" hover-class="none">
-			<view><text class="num">{{item.billings[1].payment_num?item.billings[1].payment_num:0}}</text>元</view>
+			<view><text class="num">{{item.billing[1].payment_num?item.billing[1].payment_num:0}}</text>元</view>
 			<text class="money">上月收入</text>
 		</navigator>
 		<navigator url="#" hover-class="none">
-			<view><text class="num">{{item.billings[0].payment_num?item.billings[0].payment_num:0}}</text>元</view>
+			<view><text class="num">{{item.billing[0].payment_num?item.billing[0].payment_num:0}}</text>元</view>
 			<text  class="money">本月应收</text>
 		</navigator>
 	</view>

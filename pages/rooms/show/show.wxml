@@ -1,19 +1,30 @@
 <view class="fz">
-  <radio></radio>
   <view>
     <view>房间号: <text>{{dataInfo.number}}</text></view>
   </view>
 </view>
-<view class="beizhu">
-  <text>承租人:</text>
+<view>
+  <text>承租人: </text>
+  <view>{{dataInfo.contract.realname}}</view>
+</view>
+<view>
+  <text>微信昵称: </text>
   <view>{{dataInfo.user.nickname}}</view>
+</view>
+<view>
+  <text>微信号: </text>
+  <view>{{dataInfo.contract.wx}}</view>
+</view>
+<view>
+  <text>手机号: </text>
+  <view>{{dataInfo.contract.phone}}</view>
 </view>
 <view class="beizhu">
   <text>备注：</text>
   <textarea>{{dataInfo.contract.ext_content}}</textarea>
 </view>
 <view class="flexItem rowStyle marginBottom10 cellStyle ">
-  <label class="fontSize14">开票日期 </label>
+  <label class="fontSize14"> 租期日期 </label>
   <view class="picker_group" >
     <picker mode="date" value="{{dataInfo.contract.billings_begin_day}}"  disabled="true">
     <view class="picker ">
@@ -21,9 +32,9 @@
     </view>
   </picker>
   至  
-  <picker mode="date" value="{{dataInfo.contract.billings_begin_day}}"  disabled="true">
+  <picker mode="date" value="{{dataInfo.contract.billings_end_day}}"  disabled="true">
     <view class="picker ">
-      <label class="fontSize14">{{dataInfo.contract.billings_begin_day}}</label>
+      <label class="fontSize14">{{dataInfo.contract.billings_end_day}}</label>
     </view>
   </picker>
   </view>
