@@ -66,16 +66,14 @@ Page({
           if (res.data[i]['status'] === "4") {
             let preDate = getPreMonth(nowDate);
             contractsList['realdy'].push(res.data[i])
-            console.log(preDate)
-            console.log(res.data[i]['end_day'])
-            console.log(compareDate(res.data[i]['end_day'], preDate))
-            if (compareDate(res.data[i]['end_day'], preDate)) {
+            if (compareDate(preDate, res.data[i]['end_day'])) {
               contractsList['expire'].push(res.data[i])
             }
           } else if (res.data[i]['status'] === "2") {
             contractsList['cancel'].push(res.data[i])
           } else if (res.data[i]['status'] === "3") {
             contractsList['expire'].push(res.data[i])
+            contractsList['realdy'].push(res.data[i])
           }
         }
         that.setData({

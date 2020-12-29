@@ -142,10 +142,10 @@ function getPreMonth(date) {
   var days = new Date(year, month, 0);  
   days = days.getDate(); //获取当前日期中月的天数  
   var year2 = year;  
-  var month2 = parseInt(month) - 1;  
-  if (month2 == 0) {  
-      year2 = parseInt(year2) - 1;  
-      month2 = 12;  
+  var month2 = parseInt(month) + 1;  
+  if (month2 > 12) {  
+      year2 = parseInt(year2) + 1;  
+      month2 = 1;  
   }  
   var day2 = day;  
   var days2 = new Date(year2, month2, 0);  

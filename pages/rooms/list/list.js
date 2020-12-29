@@ -35,8 +35,8 @@ Page({
           }
           for (let i = 0; i < res.data.length; i++) {
             if(res.data[i]['status'] === "4") {
-              let nowData = getPreMonth(getNowFormatDate());
-              if (compareDate(res.data[i]['contract']['end_day'], nowData)) {
+              let preDate = getPreMonth(getNowFormatDate());
+              if (compareDate(preDate, res.data[i]['contract']['end_day'])) {
                 roomsList['expire'].push(res.data[i])
               } else {
                 roomsList['ing'].push(res.data[i])

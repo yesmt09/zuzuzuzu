@@ -108,5 +108,5 @@
 </view>
 <view class="shoukuanBottom" isc wx:if="{{showButton}}">
   <button class="confirm" bindtap="cancel" wx:if="{{contract.status !== '2'}}">取消合同</button>
-  <button class="confirm" bindtap="confirm" wx:if="{{contract.status !== '4'}}">续租</button>
+  <button class="confirm" bindtap="confirm" wx:if="{{contract.status === '3'}}">确认合同</button>
 </view>

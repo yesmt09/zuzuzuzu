@@ -18,7 +18,7 @@ Page({
     grade_name:'已逾期',
     grades: [
         '快到期',
-        '已到期',
+        '已逾期',
         '空闲中',
       ]
   },/**
@@ -32,19 +32,12 @@ Page({
 /**
  * 已选下拉框
  */
-  mySelect(e) {
+  mySelect: function(e) {
+    console.log(e)
     var id = e.currentTarget.dataset.id
     this.setData({
       grade_name: this.data.grades[id],
       select: false
-    })
-    request({
-      url: app.globalData.BaseURL + '',
-      method: 'get',
-      data: {
-        type: id,
-        content: searchValue
-      }
     })
   },
 

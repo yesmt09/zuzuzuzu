@@ -71,7 +71,7 @@ Page({
           request({
             url: app.globalData.BaseURL + '/contracts/confirm',
             data: {
-              id: that.data.billing_id
+              id: that.data.contract_id
             },
             method: 'post',
             success: (res) => {
@@ -101,7 +101,7 @@ Page({
           request({
             url: app.globalData.BaseURL + '/contracts/cancel',
             data: {
-              id: that.data.billing_id
+              id: that.data.contract_id
             },
             method: 'post',
             success: (res) => {
